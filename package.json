@@ -1,0 +1,11 @@
+{
+  "name": "isa2zendro",
+  "license": "MIT",
+  "repository": "https://github.com/Zendro-dev/ISA_Schema_to_Zendro_Definition",
+  "devDependencies": {
+    "eslint": "^6.7.2"
+  },
+  "scripts": {
+    "lint": "eslint utils.js"
+  }
+}

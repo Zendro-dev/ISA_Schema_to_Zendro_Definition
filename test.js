@@ -10,5 +10,5 @@ fs.readdir("./isa_1_0_core/", (err, files) => {
         let i = require(`./isa_1_0_core/${file}`)
         OUTPUT[schemaName] = u.processProperties(i.properties, schemaName)
     });
-    // console.log(u.relationMapping)
+    // we now need to process reverse relationships from u.relationMapping
 });

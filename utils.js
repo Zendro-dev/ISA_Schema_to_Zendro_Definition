@@ -41,7 +41,6 @@ const recognizeIsaType = function(propDef) {
 }
 
 const processArray = function(arrayProp) {
-  // SEE PROTOCOL, PROCESS
   console.log(`Processing array ${JSON.stringify(arrayProp[0])}`)
   const items = arrayProp[1].items
   if (items['$ref']) {
@@ -83,7 +82,8 @@ const processAssociation = function(assocProp, from) {
     // for loop with a recursive call ?
   }
   else if (Object.keys(references).includes('type') && references.type === 'object'){
-    // this is a nested reference
+    // this is a nested reference aka a reference to an object not contained in its own schema
+    // we need to create a new schema for that field that will end up in a separate file.
   }
   return {[assocProp[0]]: {
     type: from === 'array' ? 'to_many' : 'to_one',

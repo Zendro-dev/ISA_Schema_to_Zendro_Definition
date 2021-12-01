@@ -14,7 +14,11 @@ const processProperties = function(propertiesObj, parentName) {
   let zendroAttributes = { model: PARENT, "storageType": "sql", attributes: {}, associations: {} }
   props.forEach(prop => {
     const propDef = prop[1];
-    if (propDef.type === "array") Object.assign(zendroAttributes.associations, processArray(prop))
+    if (propDef.type === "array") {
+      const def = processArray(prop);
+      if (def[1] === 'objects') Object.assign(zendroAttributes.associations, def[0])
+      else Object.assign(zendroAttributes.attributes, def[0])
+    }
     else if (!propDef.type || propDef.type === "object") {
       Object.assign(zendroAttributes.associations, processAssociation(prop))
     }
@@ -37,11 +41,11 @@ const processArray = function(arrayProp) {
   const items = arrayProp[1].items
   if (items['$ref'] || (items.types && items.types === 'object') || (items['anyOf'])) {
     console.log(`Found multiple references ${items['$ref']}`)
-    return processAssociation(arrayProp)
+    return [processAssociation(arrayProp), 'objects']
   } else {
     // This is a scalar
     console.log(`Found multiple scalars ${items.type}`)
-    return `[${recognizeIsaType(arrayProp)}]`
+    return [`[${recognizeIsaType(arrayProp)}]`, 'scalars']
   }
 }
 
@@ -61,7 +65,7 @@ const processAssociation = function(assocProp) {
     schemaName in relationMapping ? relationMapping[schemaName].push(PARENT) : relationMapping[schemaName] = [PARENT]
   }
   else if (Object.keys(references).includes('anyOf')) {
-    // there are multiple references (we don't use oneOf and allOf in ISA)
+    // there are multiple types and or references (we don't use oneOf and allOf in ISA)
     // for loop with a recursive call ?
   }
   else if (Object.keys(references).includes('type') && references.type === 'object'){

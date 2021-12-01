@@ -14,19 +14,11 @@ const processProperties = function(propertiesObj, parentName) {
   let zendroAttributes = { model: PARENT, "storageType": "sql", attributes: {}, associations: {} }
   props.forEach(prop => {
     const propDef = prop[1];
-    let def;
-    if (propDef.type === "array") {
-      def = processArray(prop);
-      Object.assign(zendroAttributes.associations, def)
-    }
+    if (propDef.type === "array") Object.assign(zendroAttributes.associations, processArray(prop))
     else if (!propDef.type || propDef.type === "object") {
-      def = processAssociation(prop);
-      Object.assign(zendroAttributes.associations, def)
+      Object.assign(zendroAttributes.associations, processAssociation(prop))
     }
-    else {
-      def = processScalar(prop);
-      Object.assign(zendroAttributes.attributes, def)
-    }
+    else Object.assign(zendroAttributes.attributes, processScalar(prop))
   });
 
   // Manually add an 'id' field:
@@ -43,34 +35,25 @@ const recognizeIsaType = function(propDef) {
 const processArray = function(arrayProp) {
   console.log(`Processing array ${JSON.stringify(arrayProp[0])}`)
   const items = arrayProp[1].items
-  if (items['$ref']) {
-    // This is a reference to another schema. Most relationships will go through here.
-    console.log(`Found reference to another schema ${items['$ref']}`)
-    return processAssociation(arrayProp, 'array')
-  }
-  else if (items.types && items.types === 'object') {
-    // This is a reference to a nested object
-    console.log(`Found reference to another object ${items.type}`)
-    processAssociation(arrayProp, 'array')
-  }
-  else if (items['anyOf']) {
-    // This is a reference to multiples schemas or objects
-    console.log(`Found reference to multiple objects ${items['anyOf']}`)
-    processAssociation(arrayProp, 'array')
-  }
-  else {
+  if (items['$ref'] || (items.types && items.types === 'object') || (items['anyOf'])) {
+    console.log(`Found multiple references ${items['$ref']}`)
+    return processAssociation(arrayProp)
+  } else {
     // This is a scalar
-    console.log(`Found scalar ${items.type}`)
+    console.log(`Found multiple scalars ${items.type}`)
     return `[${recognizeIsaType(arrayProp)}]`
   }
-  // are you a scalar array?
-  // if scalar, you'll become a Zendro "array-field", e.g. "[String]"
-  // if object, you'll become a Zendro association
 }
 
-const processAssociation = function(assocProp, from) {
+const processAssociation = function(assocProp) {
   console.log(`Processing association ${JSON.stringify(assocProp[0])}`)
-  const references = 'items' in assocProp[1] ? assocProp[1].items : assocProp[1]
+  let to_many = false,
+      references;
+  if ('items' in assocProp[1]) {
+    to_many = true
+    references = assocProp[1].items
+  }
+  else references = assocProp[1]
   let schemaName = "";
   if (Object.keys(references).includes('$ref')) {
     // there is a single reference to another schema
@@ -86,7 +69,7 @@ const processAssociation = function(assocProp, from) {
     // we need to create a new schema for that field that will end up in a separate file.
   }
   return {[assocProp[0]]: {
-    type: from === 'array' ? 'to_many' : 'to_one',
+    type: to_many ? 'to_many' : 'to_one',
     target: schemaName,
     targetStorageType: "sql",
     targetKey: null,

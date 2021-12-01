@@ -51,14 +51,9 @@ const processArray = function(arrayProp) {
 
 const processAssociation = function(assocProp) {
   console.log(`Processing association ${JSON.stringify(assocProp[0])}`)
-  let to_many = false,
-      references;
-  if ('items' in assocProp[1]) {
-    to_many = true
-    references = assocProp[1].items
-  }
-  else references = assocProp[1]
-  let schemaName = "";
+  let to_many = 'items' in assocProp[1],
+      references = 'items' in assocProp[1] ? assocProp[1] : assocProp[1].items,
+      schemaName = "";
   if (Object.keys(references).includes('$ref')) {
     // there is a single reference to another schema
     schemaName = getSchemaName(references['$ref'])
@@ -72,14 +67,7 @@ const processAssociation = function(assocProp) {
     // this is a nested reference aka a reference to an object not contained in its own schema
     // we need to create a new schema for that field that will end up in a separate file.
   }
-  return {[assocProp[0]]: {
-    type: to_many ? 'to_many' : 'to_one',
-    target: schemaName,
-    targetStorageType: "sql",
-    targetKey: null,
-    keyIn: null,
-    label: null
-  }}
+  return {[assocProp[0]]: relationTemplate(to_many, schemaName)}
 }
 
 const processScalar = function(scalarProp) {
@@ -92,6 +80,17 @@ const processScalar = function(scalarProp) {
 }
 
 function getSchemaName(string) { return string.replace('_schema.json', '').replace("#", '')}
+
+function relationTemplate(toMany, schemaName) {
+  return {
+    type: toMany ? 'to_many' : 'to_one',
+    target: schemaName,
+    targetStorageType: "sql",
+    targetKey: null,
+    keyIn: null,
+    label: null
+  }
+}
 
 module.exports = {
   processProperties,

@@ -21,13 +21,16 @@ const processProperties = function (propertiesObj, parentName) {
     const propDef = prop[1];
     if (propDef.type === "array") {
       const def = processArray(prop);
-      if (def[1] === "objects") {
-        Object.assign(zendroAttributes.associations, def[0]);
-      } else Object.assign(zendroAttributes.attributes, def[0]);
+      if (def && def[1] === "objects") {
+        Object.assign(zendroAttributes.associations, def[0][0]);
+        Object.assign(zendroAttributes.attributes, {
+          [prop[0] + "_fk"]: "[String]",
+        });
+      } else if (def) Object.assign(zendroAttributes.attributes, def[0]);
     } else if (!propDef.type || propDef.type === "object") {
-      let [associations, foreignKeys] = processAssociation(prop);
+      let [associations, foreignKey] = processAssociation(prop);
       Object.assign(zendroAttributes.associations, associations);
-      Object.assign(zendroAttributes.attributes, { [foreignKeys]: "String" });
+      Object.assign(zendroAttributes.attributes, { [foreignKey]: "[String]" });
     } else Object.assign(zendroAttributes.attributes, processScalar(prop));
   });
 
@@ -47,23 +50,20 @@ const recognizeIsaType = function (propDef) {
 const processArray = function (arrayProp) {
   console.log(`Processing array ${JSON.stringify(arrayProp[0])}`);
   const items = arrayProp[1].items;
-  if (
-    items["$ref"] ||
-    (items.types && items.types === "object") ||
-    items["anyOf"]
-  ) {
+  if (items["$ref"] || items["anyOf"]) {
     console.log(`Found multiple references ${items["$ref"]}`);
     return [processAssociation(arrayProp), "objects"];
-  } else {
+  } else if (!items.type) {
     // This is a scalar
     console.log(`Found multiple scalars ${items.type}`);
     return [`[${recognizeIsaType(arrayProp)}]`, "scalars"];
   }
+  return null;
 };
 
 const processAssociation = function (assocProp) {
   console.log(`Processing association ${JSON.stringify(assocProp[0])}`);
-  const to_many = "items" in assocProp[1],
+  let to_many = "items" in assocProp[1],
     references = "items" in assocProp[1] ? assocProp[1].items : assocProp[1],
     schemaName = "";
   if (Object.keys(references).includes("$ref")) {
@@ -75,14 +75,8 @@ const processAssociation = function (assocProp) {
   } else if (Object.keys(references).includes("anyOf")) {
     // there are multiple types and or references (we don't use oneOf and allOf in ISA)
     // for loop with a recursive call ?
-  } else if (
-    Object.keys(references).includes("type") &&
-    references.type === "object"
-  ) {
-    // this is a nested reference aka a reference to an object not contained in its own schema
-    // we need to create a new schema for that field that will end up in a separate file.
   }
-  const foreignKeyName = to_many ? "_ids" : "_id";
+  const foreignKeyName = assocProp[0] + "_fk";
   return [
     { [assocProp[0]]: relationTemplate(to_many, schemaName) },
     foreignKeyName,

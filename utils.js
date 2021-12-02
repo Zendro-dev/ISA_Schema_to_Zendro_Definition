@@ -52,7 +52,7 @@ const processArray = function(arrayProp) {
 const processAssociation = function(assocProp) {
   console.log(`Processing association ${JSON.stringify(assocProp[0])}`)
   let to_many = 'items' in assocProp[1],
-      references = 'items' in assocProp[1] ? assocProp[1] : assocProp[1].items,
+      references = 'items' in assocProp[1] ? assocProp[1].items : assocProp[1],
       schemaName = "";
   if (Object.keys(references).includes('$ref')) {
     // there is a single reference to another schema

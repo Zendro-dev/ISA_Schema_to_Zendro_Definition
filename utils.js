@@ -30,8 +30,10 @@ const processProperties = function (propertiesObj, parentName) {
       } else if (def) Object.assign(zendroAttributes.attributes, def[0]);
     } else if (!propDef.type || propDef.type === "object") {
       let [associations, foreignKey] = processAssociation(prop);
-      Object.assign(zendroAttributes.associations, associations);
-      Object.assign(zendroAttributes.attributes, { [foreignKey]: "[String]" });
+      if (associations && foreignKey) {
+        Object.assign(zendroAttributes.associations, associations);
+        Object.assign(zendroAttributes.attributes, { [foreignKey]: "[String]" });
+      }
     } else Object.assign(zendroAttributes.attributes, processScalar(prop));
   });
 
@@ -68,7 +70,7 @@ const processAssociation = function (assocProp) {
   let to_many = "items" in assocProp[1],
     references = "items" in assocProp[1] ? assocProp[1].items : assocProp[1],
     schemaName = "";
-        const keyIn = to_many ? zendroAttributes.model : target;
+
   if (Object.keys(references).includes("$ref")) {
     // there is a single reference to another schema
     schemaName = getSchemaName(references["$ref"]);
@@ -90,6 +92,7 @@ const processAssociation = function (assocProp) {
       const refs = references.anyOf.filter(element => Object.keys(element)[0] === "$ref");
       let ref_assocs = refs.map(r => {
         const target = getSchemaName(r["$ref"]);
+        const keyIn = to_many ? zendroAttributes.model : target;
         const assocName = `${assocProp[0]}_${target}`;
         const targetKey = `${target}_id`;
         console.error(`keyIn: ${keyIn}`);
@@ -99,7 +102,7 @@ const processAssociation = function (assocProp) {
         // Add foreign-key if on the to-one end:
         if (to_many) {
           zendroAttributes.attributes[targetKey] = 'String';
-          //console.error("anyOf - FK:\n" + JSON.stringify(zendroAttributes.attributes));
+          //console.error("anyOf - FK:\n" + JSON.stringify(zendroAttributes.attributes))
         }
       })
     }
@@ -110,6 +113,7 @@ const processAssociation = function (assocProp) {
     // there are multiple types and or references (we don't use oneOf and allOf in ISA)
     // for loop with a recursive call ?
   }
+  return [null, null]
 };
 
 const processScalar = function (scalarProp) {

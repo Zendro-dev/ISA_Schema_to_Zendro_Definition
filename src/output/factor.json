@@ -1,0 +1,30 @@
+{
+  "model": "factor",
+  "storageType": "sql",
+  "attributes": {
+    "factorName": "String",
+    "factorType_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "factorType": {
+      "type": "to_one",
+      "target": "ontology_annotation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

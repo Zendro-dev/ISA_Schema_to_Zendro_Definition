@@ -1,0 +1,29 @@
+{
+  "model": "protocol_parameter",
+  "storageType": "sql",
+  "attributes": {
+    "parameterName_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "parameterName": {
+      "type": "to_one",
+      "target": "ontology_annotation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

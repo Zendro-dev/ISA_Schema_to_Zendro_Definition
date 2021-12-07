@@ -1,0 +1,19 @@
+{
+  "model": "material_attribute",
+  "storageType": "sql",
+  "attributes": {
+    "characteristicType_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "characteristicType": {
+      "type": "to_one",
+      "target": "ontology_annotation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

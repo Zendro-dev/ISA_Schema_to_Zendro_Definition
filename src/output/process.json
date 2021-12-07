@@ -1,0 +1,132 @@
+{
+  "model": "process",
+  "storageType": "sql",
+  "attributes": {
+    "name": "String",
+    "executesProtocol_fk": "[String]",
+    "parameterValues_fk": "[String]",
+    "performer": "String",
+    "date": "DateTime",
+    "previousProcess_fk": "[String]",
+    "nextProcess_fk": "[String]",
+    "inputs_source_fk": "[String]",
+    "inputs_sample_fk": "[String]",
+    "inputs_data_fk": "[String]",
+    "inputs_material_fk": "[String]",
+    "outputs_sample_fk": "[String]",
+    "outputs_data_fk": "[String]",
+    "outputs_material_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "executesProtocol": {
+      "type": "to_one",
+      "target": "protocol",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "parameterValues": {
+      "type": "to_many",
+      "target": "process_parameter_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "previousProcess": {
+      "type": "to_one",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "nextProcess": {
+      "type": "to_one",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "inputs_source": {
+      "type": "to_one",
+      "target": "source",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "source_id",
+      "keysIn": "source"
+    },
+    "inputs_sample": {
+      "type": "to_one",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "sample_id",
+      "keysIn": "sample"
+    },
+    "inputs_data": {
+      "type": "to_one",
+      "target": "data",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "data_id",
+      "keysIn": "data"
+    },
+    "inputs_material": {
+      "type": "to_one",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "material_id",
+      "keysIn": "material"
+    },
+    "outputs_sample": {
+      "type": "to_one",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "sample_id",
+      "keysIn": "sample"
+    },
+    "outputs_data": {
+      "type": "to_one",
+      "target": "data",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "data_id",
+      "keysIn": "data"
+    },
+    "outputs_material": {
+      "type": "to_one",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "material_id",
+      "keysIn": "material"
+    },
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

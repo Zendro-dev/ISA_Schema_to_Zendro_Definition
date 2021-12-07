@@ -1,0 +1,22 @@
+{
+  "model": "ontology_annotation",
+  "storageType": "sql",
+  "attributes": {
+    "annotationValue": "String",
+    "termSource": "String",
+    "termAccession": "String",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

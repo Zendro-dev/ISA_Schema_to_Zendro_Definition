@@ -1,0 +1,10 @@
+{
+  "model": "comment",
+  "storageType": "sql",
+  "attributes": {
+    "name": "String",
+    "value": "String",
+    "id": "String"
+  },
+  "associations": {}
+}

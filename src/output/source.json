@@ -1,0 +1,30 @@
+{
+  "model": "source",
+  "storageType": "sql",
+  "attributes": {
+    "name": "String",
+    "characteristics_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "characteristics": {
+      "type": "to_many",
+      "target": "material_attribute_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

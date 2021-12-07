@@ -1,0 +1,65 @@
+{
+  "model": "investigation",
+  "storageType": "sql",
+  "attributes": {
+    "filename": "String",
+    "identifier": "String",
+    "title": "String",
+    "description": "String",
+    "submissionDate": "DateTime",
+    "publicReleaseDate": "DateTime",
+    "ontologySourceReferences_fk": "[String]",
+    "publications_fk": "[String]",
+    "people_fk": "[String]",
+    "studies_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
+  },
+  "associations": {
+    "ontologySourceReferences": {
+      "type": "to_many",
+      "target": "ontology_source_reference",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "publications": {
+      "type": "to_many",
+      "target": "publication",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "people": {
+      "type": "to_many",
+      "target": "person",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "studies": {
+      "type": "to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    },
+    "comments": {
+      "type": "to_many",
+      "target": "comment",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "TO-DO",
+      "targetKey": "To-Do-Key",
+      "keysIn": "To-Do-keyIn"
+    }
+  }
+}

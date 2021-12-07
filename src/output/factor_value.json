@@ -2,25 +2,11 @@
   "model": "factor_value",
   "storageType": "sql",
   "attributes": {
-    "filename": "String",
-    "measurementType_fk": "[String]",
-    "technologyType": "String",
-    "technologyPlatform": "String",
-    "dataFiles_fk": "[String]",
-    "materials": "String",
-    "characteristicCategories_fk": "[String]",
-    "unitCategories_fk": "[String]",
-    "processSequence_fk": "[String]",
-    "comments_fk": "[String]",
-    "id": "String",
-    "name": "String",
-    "value": "String",
-    "type": "String",
-    "factorName": "String",
-    "factorType_fk": "[String]",
     "category_fk": "[String]",
     "value_fk": "[String]",
-    "unit_fk": "[String]"
+    "unit_fk": "[String]",
+    "comments_fk": "[String]",
+    "id": "String"
   },
   "associations": {
     "measurementType": {

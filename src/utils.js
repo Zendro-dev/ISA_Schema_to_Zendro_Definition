@@ -18,6 +18,7 @@ const mapIsaTypeToZendroType = {
 
 const processProperties = function (propertiesObj, parentName) {
   PARENT = getSchemaName(parentName);
+  zendroAttributes.attributes = {};
   zendroAttributes.model = PARENT;
   const props = Object.entries(propertiesObj);
   props.forEach((prop) => {

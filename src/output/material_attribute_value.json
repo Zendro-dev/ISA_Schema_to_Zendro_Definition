@@ -9,69 +9,6 @@
     "id": "String"
   },
   "associations": {
-    "measurementType": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "dataFiles": {
-      "type": "to_many",
-      "target": "data",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "characteristicCategories": {
-      "type": "to_many",
-      "target": "material_attribute",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "unitCategories": {
-      "type": "to_many",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "processSequence": {
-      "type": "to_many",
-      "target": "process",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "comments": {
-      "type": "to_many",
-      "target": "comment",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "factorType": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
     "category": {
       "type": "to_one",
       "target": "material_attribute",
@@ -99,45 +36,9 @@
       "targetKey": "To-Do-Key",
       "keysIn": "To-Do-keyIn"
     },
-    "ontologySourceReferences": {
+    "comments": {
       "type": "to_many",
-      "target": "ontology_source_reference",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "publications": {
-      "type": "to_many",
-      "target": "publication",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "people": {
-      "type": "to_many",
-      "target": "person",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "studies": {
-      "type": "to_many",
-      "target": "study",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "characteristicType": {
-      "type": "to_one",
-      "target": "ontology_annotation",
+      "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "TO-DO",

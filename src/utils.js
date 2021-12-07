@@ -1,13 +1,7 @@
 const fs = require('fs');
 let PARENT,
     VERBOSE = true,
-    relationMapping = {},
-    zendroAttributes = {
-      model: PARENT,
-      storageType: "sql",
-      attributes: {},
-      associations: {},
-    };
+    relationMapping = {};
 const mapIsaTypeToZendroType = {
   string: "String",
   "date-time": "DateTime",
@@ -18,8 +12,12 @@ const mapIsaTypeToZendroType = {
 
 const processProperties = function (propertiesObj, parentName) {
   PARENT = getSchemaName(parentName);
-  zendroAttributes.attributes = {};
-  zendroAttributes.model = PARENT;
+  let zendroAttributes = {
+    model: PARENT,
+    storageType: "sql",
+    attributes: {},
+    associations: {},
+  }
   const props = Object.entries(propertiesObj);
   props.forEach((prop) => {
     const propDef = prop[1];

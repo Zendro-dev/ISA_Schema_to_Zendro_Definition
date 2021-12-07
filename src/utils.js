@@ -13,6 +13,7 @@ let zendroAttributes = {
   attributes: {},
   associations: {},
 };
+let VERBOSE = true;
 
 const processProperties = function (propertiesObj, parentName) {
   PARENT = getSchemaName(parentName);
@@ -39,8 +40,8 @@ const processProperties = function (propertiesObj, parentName) {
 
   // Manually add an 'id' field:
   zendroAttributes.attributes["id"] = "String";
-  console.log("--- " + PARENT + " ---");
-  console.log(zendroAttributes);
+  if (VERBOSE) console.log("--- " + PARENT + " ---");
+  if (VERBOSE) console.log(zendroAttributes);
   return zendroAttributes;
 };
 
@@ -51,22 +52,22 @@ const recognizeIsaType = function (propDef) {
 };
 
 const processArray = function (arrayProp) {
-  console.log(`Processing array ${JSON.stringify(arrayProp[0])}`);
+  if (VERBOSE) console.log(`Processing array ${JSON.stringify(arrayProp[0])}`);
   const items = arrayProp[1].items;
   // TODO handle 'anyOf' separately
   if (items["$ref"] || items["anyOf"]) {
-    console.log(`Found multiple references ${items["$ref"]}`);
+    if (VERBOSE) console.log(`Found multiple references ${items["$ref"]}`);
     return [processAssociation(arrayProp), "objects"];
   } else if (!items.type) {
     // This is a scalar
-    console.log(`Found multiple scalars ${items.type}`);
+    if (VERBOSE) console.log(`Found multiple scalars ${items.type}`);
     return [`[${recognizeIsaType(arrayProp)}]`, "scalars"];
   }
   return null;
 };
 
 const processAssociation = function (assocProp) {
-  console.log(`Processing association ${JSON.stringify(assocProp[0])}`);
+  if (VERBOSE) console.log(`Processing association ${JSON.stringify(assocProp[0])}`);
   let to_many = "items" in assocProp[1],
     references = "items" in assocProp[1] ? assocProp[1].items : assocProp[1],
     schemaName = "";
@@ -82,8 +83,11 @@ const processAssociation = function (assocProp) {
       { [assocProp[0]]: relationTemplate(to_many, schemaName, "To-Do-Key", "To-Do-keyIn") },
       foreignKeyName,
     ];
-  } else if (Object.keys(references).includes("anyOf")) {
-    const no_refs = references.anyOf.every(element => Object.keys(element)[0] !== "$ref");
+  }
+
+  else if (Object.keys(references).includes("anyOf")) {
+    processAnyOf(assocProp);
+    /*const no_refs = references.anyOf.every(element => Object.keys(element)[0] !== "$ref");
     console.log(`\n\nanyOf case for field '${assocProp[0]}' to_many? '${to_many}' no_refs? ${no_refs}:\n${JSON.stringify(references)}\n\n`);
     if (no_refs) {
       const attrType = to_many ? "[String]" : "String"
@@ -111,16 +115,21 @@ const processAssociation = function (assocProp) {
     //if (to_many) {} else {}
     // skip non $ref, except when there is no $ref use a string
     // there are multiple types and or references (we don't use oneOf and allOf in ISA)
-    // for loop with a recursive call ?
+    // for loop with a recursive call ?*/
   }
   return [null, null]
 };
 
+function processAnyOf(anyOfProp) {
+  console.log(`Processing anyOf ${JSON.stringify(anyOfProp)}`);
+  // TODO
+}
+
 const processScalar = function (scalarProp) {
-  console.log(`Processing scalar ${scalarProp[0]}`);
+  if (VERBOSE) console.log(`Processing scalar ${scalarProp[0]}`);
   if (scalarProp[0] !== "@id") {
     const result = { [scalarProp[0]]: recognizeIsaType(scalarProp[1]) };
-    console.log(result);
+    if (VERBOSE) console.log(result);
     return result;
   }
 };
@@ -141,6 +150,10 @@ function relationTemplate(toMany, schemaName, targetKey, keysIn) {
   };
 }
 
+function setVerbose(bool) {
+  VERBOSE = bool;
+}
+
 module.exports = {
   processProperties,
   processArray,
@@ -148,4 +161,5 @@ module.exports = {
   processScalar,
   getSchemaName,
   relationMapping,
+  setVerbose
 };

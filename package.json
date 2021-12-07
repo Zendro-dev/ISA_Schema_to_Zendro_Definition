@@ -6,6 +6,9 @@
     "eslint": "^6.7.2"
   },
   "scripts": {
-    "lint": "eslint utils.js"
+    "lint": "eslint utils.js",
+    "exec:silent": "node src/index.js",
+    "exec": "node src/index.js",
+    "exec:verbose": "node src/index.js mode=verbose"
   }
 }

@@ -1,5 +1,13 @@
-let PARENT;
-let relationMapping = {};
+const fs = require('fs');
+let PARENT,
+    VERBOSE = true,
+    relationMapping = {},
+    zendroAttributes = {
+      model: PARENT,
+      storageType: "sql",
+      attributes: {},
+      associations: {},
+    };
 const mapIsaTypeToZendroType = {
   string: "String",
   "date-time": "DateTime",
@@ -7,13 +15,6 @@ const mapIsaTypeToZendroType = {
   email: "String",
   uri: "String",
 };
-let zendroAttributes = {
-  model: PARENT,
-  storageType: "sql",
-  attributes: {},
-  associations: {},
-};
-let VERBOSE = true;
 
 const processProperties = function (propertiesObj, parentName) {
   PARENT = getSchemaName(parentName);
@@ -21,6 +22,8 @@ const processProperties = function (propertiesObj, parentName) {
   const props = Object.entries(propertiesObj);
   props.forEach((prop) => {
     const propDef = prop[1];
+
+    // PROCESS ARRAYS
     if (propDef.type === "array") {
       const def = processArray(prop);
       if (def && def[1] === "objects") {
@@ -28,20 +31,39 @@ const processProperties = function (propertiesObj, parentName) {
         Object.assign(zendroAttributes.attributes, {
           [prop[0] + "_fk"]: "[String]",
         });
-      } else if (def) Object.assign(zendroAttributes.attributes, def[0]);
-    } else if (!propDef.type || propDef.type === "object") {
+      }
+      else if (def && def[1] === "scalars") Object.assign(zendroAttributes.attributes, def[0]);
+      else if (def && def[1] === "multiples") {
+        def[0].forEach(definition => {
+          const attr = {[definition.name + "_fk"]: "[String]"},
+              assoc = {[definition.name]: definition.value};
+          Object.assign(zendroAttributes.attributes, attr);
+          Object.assign(zendroAttributes.associations, assoc);
+        })
+      }
+    }
+
+    // PROCESS ASSOCIATIONS
+    else if (!propDef.type || propDef.type === "object") {
       let [associations, foreignKey] = processAssociation(prop);
       if (associations && foreignKey) {
         Object.assign(zendroAttributes.associations, associations);
         Object.assign(zendroAttributes.attributes, { [foreignKey]: "[String]" });
       }
-    } else Object.assign(zendroAttributes.attributes, processScalar(prop));
+      else Object.assign(zendroAttributes.attributes, { [prop[0]]: "String" });
+    }
+
+    // PROCESS SCALARS
+    else Object.assign(zendroAttributes.attributes, processScalar(prop));
   });
 
   // Manually add an 'id' field:
   zendroAttributes.attributes["id"] = "String";
-  if (VERBOSE) console.log("--- " + PARENT + " ---");
-  if (VERBOSE) console.log(zendroAttributes);
+  if (VERBOSE) {
+    console.log("--- " + PARENT + " ---");
+    console.log(zendroAttributes);
+  }
+
   return zendroAttributes;
 };
 
@@ -54,12 +76,24 @@ const recognizeIsaType = function (propDef) {
 const processArray = function (arrayProp) {
   if (VERBOSE) console.log(`Processing array ${JSON.stringify(arrayProp[0])}`);
   const items = arrayProp[1].items;
-  // TODO handle 'anyOf' separately
-  if (items["$ref"] || items["anyOf"]) {
+  if (items["$ref"]) {
     if (VERBOSE) console.log(`Found multiple references ${items["$ref"]}`);
     return [processAssociation(arrayProp), "objects"];
-  } else if (!items.type) {
-    // This is a scalar
+  }
+  else if (items["anyOf"]) {
+    if (VERBOSE) console.log(`Found multiple $ref ${items.items}`);
+    let outputRelations = []
+    items['anyOf'].forEach((item) => {
+      outputRelations.push(
+          {
+            name: `${arrayProp[0]}_${getSchemaName(item["$ref"])}`,
+            value: processAnyOf({"anyOf": [item]})
+          }
+      )
+    })
+    return [outputRelations, "multiples"]
+  }
+  else if (!items.type) {
     if (VERBOSE) console.log(`Found multiple scalars ${items.type}`);
     return [`[${recognizeIsaType(arrayProp)}]`, "scalars"];
   }
@@ -78,15 +112,22 @@ const processAssociation = function (assocProp) {
     schemaName in relationMapping
       ? relationMapping[schemaName].push(PARENT)
       : (relationMapping[schemaName] = [PARENT]);
-    const foreignKeyName = assocProp[0] + "_fk";
     return [
       { [assocProp[0]]: relationTemplate(to_many, schemaName, "To-Do-Key", "To-Do-keyIn") },
-      foreignKeyName,
+      assocProp[0] + "_fk",
     ];
   }
 
   else if (Object.keys(references).includes("anyOf")) {
-    processAnyOf(assocProp);
+    const anyOf = processAnyOf(assocProp[1], to_many);
+    if (anyOf === 'String') return [null, null]
+    else {
+      return [
+        { [assocProp[0]]: anyOf },
+        assocProp[0] + "_fk",
+      ];
+    }
+
     /*const no_refs = references.anyOf.every(element => Object.keys(element)[0] !== "$ref");
     console.log(`\n\nanyOf case for field '${assocProp[0]}' to_many? '${to_many}' no_refs? ${no_refs}:\n${JSON.stringify(references)}\n\n`);
     if (no_refs) {
@@ -120,9 +161,19 @@ const processAssociation = function (assocProp) {
   return [null, null]
 };
 
-function processAnyOf(anyOfProp) {
-  console.log(`Processing anyOf ${JSON.stringify(anyOfProp)}`);
-  // TODO
+function processAnyOf(fieldProp, to_many) {
+  if (VERBOSE)  console.log(`Processing anyOf ${JSON.stringify(fieldProp)}`);
+  const item = fieldProp['anyOf'].filter(element => "$ref" in element)[0];
+  if (item) {
+    const target = getSchemaName(item["$ref"]),
+        keyIn = to_many ? PARENT : target,
+        targetKey = `${target}_id`;
+    target in relationMapping
+        ? relationMapping[target].push(PARENT)
+        : (relationMapping[target] = [PARENT]);
+    return relationTemplate(to_many, target, targetKey, keyIn);
+  }
+  return "String"
 }
 
 const processScalar = function (scalarProp) {
@@ -150,8 +201,21 @@ function relationTemplate(toMany, schemaName, targetKey, keysIn) {
   };
 }
 
+/** Sets the value of verbosity to true or false. If verbosity is true, the console will output logs.
+ * @param {Boolean} bool - controls the value of the verbosity
+ */
 function setVerbose(bool) {
   VERBOSE = bool;
+}
+
+function writeToFile(schema) {
+  if (VERBOSE) console.log(`Writting to file ${schema.name}`)
+  const filePath = `./src/output/${schema.name}.json`,
+      data = JSON.stringify(schema.value, null, 2);
+  fs.writeFile(filePath, data, (err) => {
+    if (err) throw err;
+    if (VERBOSE) console.log(`File ${filePath} written.`);
+  })
 }
 
 module.exports = {
@@ -161,5 +225,6 @@ module.exports = {
   processScalar,
   getSchemaName,
   relationMapping,
-  setVerbose
+  setVerbose,
+  writeToFile
 };

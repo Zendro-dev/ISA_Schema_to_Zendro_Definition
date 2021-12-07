@@ -127,36 +127,6 @@ const processAssociation = function (assocProp) {
         assocProp[0] + "_fk",
       ];
     }
-
-    /*const no_refs = references.anyOf.every(element => Object.keys(element)[0] !== "$ref");
-    console.log(`\n\nanyOf case for field '${assocProp[0]}' to_many? '${to_many}' no_refs? ${no_refs}:\n${JSON.stringify(references)}\n\n`);
-    if (no_refs) {
-      const attrType = to_many ? "[String]" : "String"
-      zendroAttributes.attributes[assocProp[0]] = attrType;
-    } else {
-      const refs = references.anyOf.filter(element => Object.keys(element)[0] === "$ref");
-      let ref_assocs = refs.map(r => {
-        const target = getSchemaName(r["$ref"]);
-        const keyIn = to_many ? zendroAttributes.model : target;
-        const assocName = `${assocProp[0]}_${target}`;
-        const targetKey = `${target}_id`;
-        console.error(`keyIn: ${keyIn}`);
-        const assocDef = relationTemplate(to_many, target, targetKey, keyIn);
-        zendroAttributes.associations[assocName] = assocDef;
-        console.error(`anyOf - assoc '${assocName}':\n` + JSON.stringify(zendroAttributes.associations[assocName]));
-        // Add foreign-key if on the to-one end:
-        if (to_many) {
-          zendroAttributes.attributes[targetKey] = 'String';
-          //console.error("anyOf - FK:\n" + JSON.stringify(zendroAttributes.attributes))
-        }
-      })
-    }
-    // assocPorps = {}
-    // How do I know, whether this is type array or not
-    //if (to_many) {} else {}
-    // skip non $ref, except when there is no $ref use a string
-    // there are multiple types and or references (we don't use oneOf and allOf in ISA)
-    // for loop with a recursive call ?*/
   }
   return [null, null]
 };

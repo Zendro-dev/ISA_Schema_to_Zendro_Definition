@@ -10,7 +10,7 @@
   },
   "associations": {
     "category": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "factor",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -19,7 +19,7 @@
       "keysIn": "factor_value"
     },
     "unit": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -28,7 +28,7 @@
       "keysIn": "factor_value"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -37,7 +37,7 @@
       "keysIn": "factor_value"
     },
     "sample_factorValues": {
-      "type": "to_x",
+      "type": "many_to_many",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

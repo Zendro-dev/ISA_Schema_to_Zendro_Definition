@@ -4,6 +4,5 @@
   "attributes": {
     "name": "String",
     "id": "String"
-  },
-  "associations": {}
+  }
 }

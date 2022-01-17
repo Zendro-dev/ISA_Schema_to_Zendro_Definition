@@ -16,7 +16,7 @@
   },
   "associations": {
     "roles": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -25,7 +25,7 @@
       "keysIn": "person"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

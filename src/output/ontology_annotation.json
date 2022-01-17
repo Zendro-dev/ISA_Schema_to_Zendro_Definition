@@ -10,7 +10,7 @@
   },
   "associations": {
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -37,7 +37,7 @@
       "keysIn": "assay"
     },
     "publication_status": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "publication",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -46,7 +46,7 @@
       "keysIn": "publication"
     },
     "person_roles": {
-      "type": "to_x",
+      "type": "many_to_many",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -64,7 +64,7 @@
       "keysIn": "study"
     },
     "factor_factorType": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "factor",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -91,7 +91,7 @@
       "keysIn": "protocol"
     },
     "protocol_parameter_parameterName": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -100,7 +100,7 @@
       "keysIn": "protocol_parameter"
     },
     "material_attribute_characteristicType": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -109,7 +109,7 @@
       "keysIn": "material_attribute"
     },
     "material_attribute_value_unit": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -118,7 +118,7 @@
       "keysIn": "material_attribute_value"
     },
     "factor_value_unit": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -127,7 +127,7 @@
       "keysIn": "factor_value"
     },
     "process_parameter_value_unit": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "process_parameter_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

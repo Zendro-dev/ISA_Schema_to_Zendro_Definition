@@ -11,7 +11,7 @@
   },
   "associations": {
     "characteristics": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -20,7 +20,7 @@
       "keysIn": "sample"
     },
     "factorValues": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -29,7 +29,7 @@
       "keysIn": "sample"
     },
     "derivesFrom": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -38,7 +38,7 @@
       "keysIn": "sample"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

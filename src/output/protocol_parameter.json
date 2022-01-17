@@ -8,7 +8,7 @@
   },
   "associations": {
     "parameterName": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -17,7 +17,7 @@
       "keysIn": "protocol_parameter"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -35,7 +35,7 @@
       "keysIn": "protocol"
     },
     "process_parameter_value_category": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "process_parameter_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

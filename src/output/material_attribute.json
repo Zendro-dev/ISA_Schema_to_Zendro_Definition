@@ -7,7 +7,7 @@
   },
   "associations": {
     "characteristicType": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -34,7 +34,7 @@
       "keysIn": "study"
     },
     "material_attribute_value_category": {
-      "type": "to_x",
+      "type": "one_to_many",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

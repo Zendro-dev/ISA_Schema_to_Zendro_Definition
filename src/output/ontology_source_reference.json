@@ -15,9 +15,18 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "ontology_source_reference_comment",
+      "targetKey": "comments_fk",
+      "keysIn": "ontology_source_reference"
+    },
+    "investigation_ontologySourceReferences": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "ontologySourceReferences",
+      "targetKey": "ontologySourceReferences_fk",
+      "keysIn": "investigation"
     }
   }
 }

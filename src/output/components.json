@@ -1,0 +1,38 @@
+{
+    "model": "components",
+    "storageType": "sql",
+    "attributes": {
+        "componentName":"String",
+        "componentType_fk":"[String]",
+        "comments_fk":"[String]"
+    },
+    "associations": {
+        "componentType": {
+            "type": "many_to_one",
+            "target": "ontology_annotation",
+            "targetStorageType": "sql",
+            "implementation": "foreignkeys",
+            "reverseAssociation": "components_componentType",
+            "targetKey": "componentType_fk",
+            "keysIn": "components"
+        },
+        "comments": {
+            "type": "one_to_many",
+            "target": "comment",
+            "targetStorageType": "sql",
+            "implementation": "foreignkeys",
+            "reverseAssociation": "components_comments",
+            "targetKey": "comments_fk",
+            "keysIn": "components"
+        },
+        "protocol_components": {
+            "type": "many_to_many",
+            "target": "protocol",
+            "targetStorageType": "sql",
+            "implementation": "foreignkeys",
+            "reverseAssociation": "components",
+            "targetKey": "components_fk",
+            "keysIn": "protocol"
+        }
+    }
+}

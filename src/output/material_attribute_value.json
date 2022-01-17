@@ -3,7 +3,7 @@
   "storageType": "sql",
   "attributes": {
     "category_fk": "[String]",
-    "value_fk": "[String]",
+    "value": "String",
     "unit_fk": "[String]",
     "comments_fk": "[String]",
     "id": "String"
@@ -14,36 +14,54 @@
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "value": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "ontology_annotation_id",
-      "keysIn": "ontology_annotation"
+      "reverseAssociation": "material_attribute_value_category",
+      "targetKey": "category_fk",
+      "keysIn": "material_attribute_value"
     },
     "unit": {
       "type": "to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "material_attribute_value_unit",
+      "targetKey": "unit_fk",
+      "keysIn": "material_attribute_value"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "material_attribute_value_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "material_attribute_value"
+    },
+    "material_characteristics": {
+      "type": "to_x",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "material"
+    },
+    "source_characteristics": {
+      "type": "to_x",
+      "target": "source",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "source"
+    },
+    "sample_characteristics": {
+      "type": "to_x",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "sample"
     }
   }
 }

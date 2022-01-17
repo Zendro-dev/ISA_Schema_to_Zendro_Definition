@@ -13,18 +13,36 @@
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_factorType",
+      "targetKey": "factorType_fk",
+      "keysIn": "factor"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "factor"
+    },
+    "study_factors": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "factors",
+      "targetKey": "factors_fk",
+      "keysIn": "study"
+    },
+    "factor_value_category": {
+      "type": "to_x",
+      "target": "factor_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "category",
+      "targetKey": "category_fk",
+      "keysIn": "factor_value"
     }
   }
 }

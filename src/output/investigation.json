@@ -17,49 +17,49 @@
   },
   "associations": {
     "ontologySourceReferences": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "ontology_source_reference",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "investigation_ontologySourceReferences",
+      "targetKey": "ontologySourceReferences_fk",
+      "keysIn": "investigation"
     },
     "publications": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "publication",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "investigation_publications",
+      "targetKey": "publications_fk",
+      "keysIn": "investigation"
     },
     "people": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "investigation_people",
+      "targetKey": "people_fk",
+      "keysIn": "investigation"
     },
     "studies": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "investigation_studies",
+      "targetKey": "studies_fk",
+      "keysIn": "investigation"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "investigation_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "investigation"
     }
   }
 }

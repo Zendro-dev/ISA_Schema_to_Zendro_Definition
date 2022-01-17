@@ -9,35 +9,63 @@
     "version": "String",
     "parameters_fk": "[String]",
     "comments_fk": "[String]",
+    "components_fk":"[String]",
     "id": "String"
   },
   "associations": {
+    "components": {
+      "type": "many_to_many",
+      "target": "components",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "protocol_components",
+      "targetKey": "components_fk",
+      "keysIn": "protocol"
+    },
     "protocolType": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_protocolType",
+      "targetKey": "protocolType_fk",
+      "keysIn": "protocol"
     },
     "parameters": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_parameters",
+      "targetKey": "parameters_fk",
+      "keysIn": "protocol"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "protocol"
+    },    
+    "process_executesProtocol": {
+      "type": "one_to_many",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "executesProtocol",
+      "targetKey": "executesProtocol_fk",
+      "keysIn": "process"
+    },
+    "study_protocols": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "protocols",
+      "targetKey": "protocols_fk",
+      "keysIn": "study"
     }
   }
 }

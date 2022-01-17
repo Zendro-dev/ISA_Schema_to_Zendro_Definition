@@ -5,26 +5,54 @@
     "name": "String",
     "characteristics_fk": "[String]",
     "comments_fk": "[String]",
-    "id": "String"
+    "id": "String",
+    "derived_children_fk":"[String]"
   },
   "associations": {
+    "derived_children": {
+      "type": "to_many",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "derivesFrom",
+      "targetKey": "derivesFrom_fk",
+      "keysIn": "sample"
+    },
     "characteristics": {
       "type": "to_many",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "source_characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "source"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "source_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "source"
+    },
+    "process_inputs_source": {
+      "type": "many_to_many",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "inputs_source",
+      "targetKey": "inputs_source_fk",
+      "keysIn": "process"
+    },
+    "study_materials_sources": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "materials_sources",
+      "targetKey": "materials_sources_fk",
+      "keysIn": "study"
     }
   }
 }

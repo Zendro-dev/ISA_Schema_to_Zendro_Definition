@@ -16,18 +16,36 @@
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "publication_status",
+      "targetKey": "status_fk",
+      "keysIn": "publication"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "publication_comment",
+      "targetKey": "comments_fk",
+      "keysIn": "publication"
+    },
+    "investigation_publications": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "publications",
+      "targetKey": "publications_fk",
+      "keysIn": "investigation"
+    },
+    "study_publications": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "publications",
+      "targetKey": "publications_fk",
+      "keysIn": "study"
     }
   }
 }

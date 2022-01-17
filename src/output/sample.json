@@ -15,36 +15,72 @@
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "sample"
     },
     "factorValues": {
       "type": "to_many",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_factorValues",
+      "targetKey": "factorValues_fk",
+      "keysIn": "sample"
     },
     "derivesFrom": {
       "type": "to_many",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "derived_children",
+      "targetKey": "derived_children_fk",
+      "keysIn": "sample"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "sample"
+    },
+    "process_inputs_sample": {
+      "type": "many_to_many",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "inputs_sample",
+      "targetKey": "inputs_sample_fk",
+      "keysIn": "process"
+    },
+    "process_outputs_sample": {
+      "type": "many_to_many",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "outputs_sample",
+      "targetKey": "outputs_sample_fk",
+      "keysIn": "process"
+    },
+    "assay_materials_samples":{
+      "type": "many_to_many",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "assay"
+    },
+    "study_materials_samples": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "study"
     }
   }
 }

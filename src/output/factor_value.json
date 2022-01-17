@@ -3,7 +3,7 @@
   "storageType": "sql",
   "attributes": {
     "category_fk": "[String]",
-    "value_fk": "[String]",
+    "value": "String",
     "unit_fk": "[String]",
     "comments_fk": "[String]",
     "id": "String"
@@ -14,36 +14,36 @@
       "target": "factor",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "value": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "ontology_annotation_id",
-      "keysIn": "ontology_annotation"
+      "reverseAssociation": "factor_value_category",
+      "targetKey": "category_fk",
+      "keysIn": "factor_value"
     },
     "unit": {
       "type": "to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_value_unit",
+      "targetKey": "unit_fk",
+      "keysIn": "factor_value"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_value_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "factor_value"
+    },
+    "sample_factorValues": {
+      "type": "to_x",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "factorValues",
+      "targetKey": "factorValues_fk",
+      "keysIn": "sample"
     }
   }
 }

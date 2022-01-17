@@ -12,7 +12,9 @@
     "people_fk": "[String]",
     "studyDesignDescriptors_fk": "[String]",
     "protocols_fk": "[String]",
-    "materials": "String",
+    "materials_sources_fk": "[String]",
+    "materials_samples_fk": "[String]",
+    "materials_otherMaterials_fk": "[String]",
     "processSequence_fk": "[String]",
     "assays_fk": "[String]",
     "factors_fk": "[String]",
@@ -22,95 +24,131 @@
     "id": "String"
   },
   "associations": {
+    "materials_sources": {
+      "type": "many_to_many",
+      "target": "source",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "study_materials_sources",
+      "targetKey": "materials_sources_fk",
+      "keysIn": "study"
+    },
+    "materials_samples": {
+      "type": "many_to_many",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "study_materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "study"
+    },
+    "materials_otherMaterials": {
+      "type": "many_to_many",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "study_materials_otherMaterials",
+      "targetKey": "materials_otherMaterials_fk",
+      "keysIn": "study"
+    },
     "publications": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "publication",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_publications",
+      "targetKey": "publications_fk",
+      "keysIn": "study"
     },
     "people": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_people",
+      "targetKey": "people_fk",
+      "keysIn": "study"
     },
     "studyDesignDescriptors": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_studyDesignDescriptors",
+      "targetKey": "studyDesignDescriptors_fk",
+      "keysIn": "study"
     },
     "protocols": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "protocol",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_protocols",
+      "targetKey": "protocols_fk",
+      "keysIn": "study"
     },
     "processSequence": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_processSequence",
+      "targetKey": "processSequence_fk",
+      "keysIn": "study"
     },
     "assays": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_assays",
+      "targetKey": "assays_fk",
+      "keysIn": "study"
     },
     "factors": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "factor",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_factors",
+      "targetKey": "factors_fk",
+      "keysIn": "study"
     },
     "characteristicCategories": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_characteristicCategories",
+      "targetKey": "characteristicCategories_fk",
+      "keysIn": "study"
     },
     "unitCategories": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_unitCategories",
+      "targetKey": "unitCategories_fk",
+      "keysIn": "study"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "study_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "study"
+    },
+    "investigation_studies": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "studies",
+      "targetKey": "studies_fk",
+      "keysIn": "investigation"
     }
   }
 }

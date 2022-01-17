@@ -12,18 +12,36 @@
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_parameter_parameterName",
+      "targetKey": "parameterName_fk",
+      "keysIn": "protocol_parameter"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_parameter_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "protocol_parameter"
+    },
+    "protocol_parameters": {
+      "type": "many_to_many",
+      "target": "protocol",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "parameters",
+      "targetKey": "parameters_fk",
+      "keysIn": "protocol"
+    },
+    "process_parameter_value_category": {
+      "type": "to_x",
+      "target": "process_parameter_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "category",
+      "targetKey": "category_fk",
+      "keysIn": "process_parameter_value"
     }
   }
 }

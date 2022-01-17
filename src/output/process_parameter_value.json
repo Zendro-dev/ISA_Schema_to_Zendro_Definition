@@ -3,7 +3,7 @@
   "storageType": "sql",
   "attributes": {
     "category_fk": "[String]",
-    "value_fk": "[String]",
+    "value": "String",
     "unit_fk": "[String]",
     "comments_fk": "[String]",
     "id": "String"
@@ -14,36 +14,36 @@
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "value": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "ontology_annotation_id",
-      "keysIn": "ontology_annotation"
+      "reverseAssociation": "process_parameter_value_category",
+      "targetKey": "category_fk",
+      "keysIn": "process_parameter_value"
     },
     "unit": {
       "type": "to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "process_parameter_value_unit",
+      "targetKey": "unit_fk",
+      "keysIn": "process_parameter_value"
     },
     "comments": {
       "type": "to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "process_parameter_value_comments",
+      "targetKey": "comments_fk",
+      "keysIn": "process_parameter_value"
+    },
+    "process_parameterValues": {
+      "type": "many_to_one",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "parameterValues",
+      "targetKey": "parameterValues_fk",
+      "keysIn": "process"
     }
   }
 }

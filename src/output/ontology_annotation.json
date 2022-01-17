@@ -14,9 +14,144 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "ontology_annotations",
+      "targetKey": "comments_fk",
+      "keysIn": "ontology_annotation"
+    },    
+    "assay_measurementType": {
+      "type": "one_to_many",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "measurementType",
+      "targetKey": "measurementType_fk",
+      "keysIn": "assay"
+    },
+    "assay_unitCategories": {
+      "type": "many_to_many",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "unitCategories",
+      "targetKey": "unitCategories_fk",
+      "keysIn": "assay"
+    },
+    "publication_status": {
+      "type": "to_x",
+      "target": "publication",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "status",
+      "targetKey": "status_fk",
+      "keysIn": "publication"
+    },
+    "person_roles": {
+      "type": "to_x",
+      "target": "person",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "roles",
+      "targetKey": "roles_fk",
+      "keysIn": "person"
+    },
+    "study_studyDesignDescriptors": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "studyDesignDescriptors",
+      "targetKey": "studyDesignDescriptors_fk",
+      "keysIn": "study"
+    },
+    "factor_factorType": {
+      "type": "to_x",
+      "target": "factor",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "factorType",
+      "targetKey": "factorType_fk",
+      "keysIn": "factor"
+    },
+    "study_unitCategories": {
+      "type": "many_to_many",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "unitCategories",
+      "targetKey": "unitCategories_fk",
+      "keysIn": "study"
+    },
+    "protocol_protocolType": {
+      "type": "one_to_many",
+      "target": "protocol",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "protocolType",
+      "targetKey": "protocolType_fk",
+      "keysIn": "protocol"
+    },
+    "protocol_parameter_parameterName": {
+      "type": "to_x",
+      "target": "protocol_parameter",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "parameterName",
+      "targetKey": "parameterName_fk",
+      "keysIn": "protocol_parameter"
+    },
+    "material_attribute_characteristicType": {
+      "type": "to_x",
+      "target": "material_attribute",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristicType",
+      "targetKey": "characteristicType_fk",
+      "keysIn": "material_attribute"
+    },
+    "material_attribute_value_unit": {
+      "type": "to_x",
+      "target": "material_attribute_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "unit",
+      "targetKey": "unit_fk",
+      "keysIn": "material_attribute_value"
+    },
+    "factor_value_unit": {
+      "type": "to_x",
+      "target": "factor_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "unit",
+      "targetKey": "unit_fk",
+      "keysIn": "factor_value"
+    },
+    "process_parameter_value_unit": {
+      "type": "to_x",
+      "target": "process_parameter_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "unit",
+      "targetKey": "unit_fk",
+      "keysIn": "process_parameter_value"
+    },
+    "assay_technologyType": {
+      "type": "one_to_many",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "technologyType",
+      "targetKey": "technologyType_fk",
+      "keysIn": "assay"
+    },
+    "components_componentType": {
+      "type": "one_to_many",
+      "target": "components",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "componentType",
+      "targetKey": "componentType_fk",
+      "keysIn": "components"
     }
   }
 }

@@ -4,10 +4,11 @@
   "attributes": {
     "filename": "String",
     "measurementType_fk": "[String]",
-    "technologyType": "String",
+    "technologyType_fk": "[String]",
     "technologyPlatform": "String",
     "dataFiles_fk": "[String]",
-    "materials": "String",
+    "materials_samples_fk": "[String]",
+    "materials_otherMaterials_fk": "[String]",
     "characteristicCategories_fk": "[String]",
     "unitCategories_fk": "[String]",
     "processSequence_fk": "[String]",
@@ -16,58 +17,94 @@
   },
   "associations": {
     "measurementType": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_measurementType",
+      "targetKey": "measurementType_fk",
+      "keysIn": "assay"
+    },
+    "technologyType": {
+      "type": "many_to_one",
+      "target": "ontology_annotation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "assay_technologyType",
+      "targetKey": "technologyType_fk",
+      "keysIn": "assay"
+    },
+    "materials_otherMaterials":{
+      "type": "many_to_many",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "assay_materials_otherMaterials",
+      "targetKey": "materials_otherMaterials_fk",
+      "keysIn": "assay"
+    },
+    "materials_samples":{
+      "type": "many_to_many",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "assay_materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "assay"
     },
     "dataFiles": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "data",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_dataFiles",
+      "targetKey": "dataFiles_fk",
+      "keysIn": "assay"
     },
     "characteristicCategories": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_characteristicCategories",
+      "targetKey": "characteristicCategories_fk",
+      "keysIn": "assay"
     },
     "unitCategories": {
-      "type": "to_many",
+      "type": "many_to_many",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_unitCategories",
+      "targetKey": "unitCategories_fk",
+      "keysIn": "assay"
     },
     "processSequence": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_processSequence",
+      "targetKey": "processSequence_fk",
+      "keysIn": "assay"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "assay_comment",
+      "targetKey": "comments_fk",
+      "keysIn": "assay"
+    },
+    "study_assays": {
+      "type": "many_to_one",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "assays",
+      "targetKey": "assays_fk",
+      "keysIn": "study"
     }
   }
 }

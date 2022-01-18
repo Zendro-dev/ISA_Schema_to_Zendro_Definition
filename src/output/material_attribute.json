@@ -3,7 +3,9 @@
   "storageType": "sql",
   "internalId": "id",
   "attributes": {
-    "characteristicType_fk": "[String]",
+    "characteristicType_fk": "String",
+    "assay_characteristicCategories_fk": "[String]",
+    "study_characteristicCategories_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -18,23 +20,23 @@
     },
     "assay_characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "characteristicCategories_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristicCategories",
-      "targetKey": "characteristicCategories_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_characteristicCategories_fk",
+      "keysIn": "material_attribute"
     },
     "study_characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "characteristicCategories_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristicCategories",
-      "targetKey": "characteristicCategories_fk",
-      "keysIn": "study"
+      "targetKey": "study_characteristicCategories_fk",
+      "keysIn": "material_attribute"
     },
     "material_attribute_value_category": {
       "type": "one_to_many",

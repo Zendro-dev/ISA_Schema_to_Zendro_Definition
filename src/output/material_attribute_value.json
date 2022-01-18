@@ -3,10 +3,12 @@
   "storageType": "sql",
   "internalId": "id",
   "attributes": {
-    "category_fk": "[String]",
+    "category_fk": "String",
     "value": "String",
-    "unit_fk": "[String]",
-    "comments_fk": "[String]",
+    "unit_fk": "String",
+    "source_characteristics_fk": "[String]",
+    "material_characteristics_fk": "[String]",
+    "sample_characteristics_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -34,38 +36,38 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "material_attribute_value_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "material_attribute_value"
+      "targetKey": "material_attribute_value_comments_fk",
+      "keysIn": "comment"
     },
     "material_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "characteristics_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "characteristics_fk",
-      "keysIn": "material"
+      "targetKey": "material_characteristics_fk",
+      "keysIn": "material_attribute_value"
     },
     "source_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "characteristics_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "characteristics_fk",
-      "keysIn": "source"
+      "targetKey": "source_characteristics_fk",
+      "keysIn": "material_attribute_value"
     },
     "sample_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "characteristics_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "characteristics_fk",
-      "keysIn": "sample"
+      "targetKey": "sample_characteristics_fk",
+      "keysIn": "material_attribute_value"
     }
   }
 }

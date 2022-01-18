@@ -5,7 +5,9 @@
   "attributes": {
     "name": "String",
     "type": "String",
-    "comments_fk": "[String]",
+    "assay_dataFiles_fk": "String",
+    "process_inputs_data_fk": "[String]",
+    "process_outputs_data_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -14,29 +16,29 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "data",
-      "targetKey": "comments_fk",
-      "keysIn": "data"
+      "reverseAssociation": "data_comments",
+      "targetKey": "data_comment_fk",
+      "keysIn": "comment"
     },
     "process_inputs_data": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "inputs_data_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "inputs_data",
-      "targetKey": "inputs_data_fk",
-      "keysIn": "process"
+      "targetKey": "process_inputs_data_fk",
+      "keysIn": "data"
     },
     "process_outputs_data": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "outputs_material_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "outputs_data",
-      "targetKey": "outputs_data_fk",
-      "keysIn": "process"
+      "targetKey": "process_outputs_data_fk",
+      "keysIn": "data"
     },
     "assay_dataFiles": {
       "type": "many_to_one",
@@ -44,8 +46,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "dataFiles",
-      "targetKey": "dataFiles_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_dataFiles_fk",
+      "keysIn": "data"
     }
   }
 }

@@ -4,8 +4,8 @@
   "internalId": "id",
   "attributes": {
     "factorName": "String",
-    "factorType_fk": "[String]",
-    "comments_fk": "[String]",
+    "factorType_fk": "String",
+    "study_factors_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -24,18 +24,18 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "factor_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "factor"
+      "targetKey": "factor_comments_fk",
+      "keysIn": "comment"
     },
     "study_factors": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "factors_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "factors",
-      "targetKey": "factors_fk",
-      "keysIn": "study"
+      "targetKey": "study_factors_fk",
+      "keysIn": "factor"
     },
     "factor_value_category": {
       "type": "one_to_many",

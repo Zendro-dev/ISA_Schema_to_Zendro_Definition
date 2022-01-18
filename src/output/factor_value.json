@@ -3,10 +3,10 @@
   "storageType": "sql",
   "internalId": "id",
   "attributes": {
-    "category_fk": "[String]",
+    "category_fk": "String",
     "value": "String",
-    "unit_fk": "[String]",
-    "comments_fk": "[String]",
+    "unit_fk": "String",
+    "sample_factorValues_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -34,18 +34,18 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "factor_value_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "factor_value"
+      "targetKey": "factor_value_comments_fk",
+      "keysIn": "comment"
     },
     "sample_factorValues": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "factorValues_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "factorValues",
-      "targetKey": "factorValues_fk",
-      "keysIn": "sample"
+      "targetKey": "sample_factorValues_fk",
+      "keysIn": "factor_value"
     }
   }
 }

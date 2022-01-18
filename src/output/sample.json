@@ -7,13 +7,16 @@
     "characteristics_fk": "[String]",
     "factorValues_fk": "[String]",
     "derivesFrom_fk": "[String]",
-    "comments_fk": "[String]",
+    "assay_materials_samples_fk": "[String]",
+    "study_materials_samples_fk": "[String]",
+    "process_inputs_sample_fk": "[String]",
+    "process_outputs_sample_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "characteristics": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "sample_characteristics_fk",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -23,7 +26,7 @@
     },
     "factorValues": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "sample_factorValues_fk",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -33,12 +36,12 @@
     },
     "derivesFrom": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "derived_children_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "derived_children",
-      "targetKey": "derived_children_fk",
+      "targetKey": "derivesFrom_fk",
       "keysIn": "sample"
     },
     "comments": {
@@ -47,48 +50,48 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "sample_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "sample"
+      "targetKey": "sample_comments_fk",
+      "keysIn": "comment"
     },
     "process_inputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "inputs_sample_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "inputs_sample",
-      "targetKey": "inputs_sample_fk",
-      "keysIn": "process"
+      "targetKey": "process_inputs_sample_fk",
+      "keysIn": "sample"
     },
     "process_outputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "outputs_sample_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "outputs_sample",
-      "targetKey": "outputs_sample_fk",
-      "keysIn": "process"
+      "targetKey": "process_outputs_sample_fk",
+      "keysIn": "sample"
     },
     "assay_materials_samples":{
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "materials_samples_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "materials_samples",
-      "targetKey": "materials_samples_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_materials_samples_fk",
+      "keysIn": "sample"
     },
     "study_materials_samples": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "materials_samples_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "materials_samples",
-      "targetKey": "materials_samples_fk",
-      "keysIn": "study"
+      "targetKey": "study_materials_samples_fk",
+      "keysIn": "sample"
     }
   }
 }

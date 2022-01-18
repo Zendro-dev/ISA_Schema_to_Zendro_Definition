@@ -7,7 +7,7 @@
     "file": "String",
     "name": "String",
     "version": "String",
-    "comments_fk": "[String]",
+    "investigation_ontologySourceReferences_fk": "String",
     "id": "String"
   },
   "associations": {
@@ -16,9 +16,9 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "ontology_source_reference_comment",
-      "targetKey": "comments_fk",
-      "keysIn": "ontology_source_reference"
+      "reverseAssociation": "ontology_source_reference_comments",
+      "targetKey": "ontology_source_reference_comment_fk",
+      "keysIn": "comment"
     },
     "investigation_ontologySourceReferences": {
       "type": "many_to_one",
@@ -26,8 +26,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "ontologySourceReferences",
-      "targetKey": "ontologySourceReferences_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_ontologySourceReferences_fk",
+      "keysIn": "ontology_source_reference"
     }
   }
 }

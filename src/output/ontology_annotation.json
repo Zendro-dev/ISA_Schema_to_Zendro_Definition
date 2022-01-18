@@ -6,7 +6,10 @@
     "annotationValue": "String",
     "termSource": "String",
     "termAccession": "String",
-    "comments_fk": "[String]",
+    "assay_unitCategories_fk": "[String]",
+    "study_studyDesignDescriptors_fk": "[String]",
+    "study_unitCategories_fk": "[String]",
+    "person_roles_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -15,9 +18,9 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "ontology_annotations",
-      "targetKey": "comments_fk",
-      "keysIn": "ontology_annotation"
+      "reverseAssociation": "ontology_annotation_comments",
+      "targetKey": "ontology_annotations_fk",
+      "keysIn": "comment"
     },    
     "assay_measurementType": {
       "type": "one_to_many",
@@ -30,13 +33,13 @@
     },
     "assay_unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "unitCategories_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "unitCategories",
-      "targetKey": "unitCategories_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_unitCategories_fk",
+      "keysIn": "ontology_annotation"
     },
     "publication_status": {
       "type": "one_to_many",
@@ -49,23 +52,23 @@
     },
     "person_roles": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "roles_fk",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "roles",
-      "targetKey": "roles_fk",
-      "keysIn": "person"
+      "targetKey": "person_roles_fk",
+      "keysIn": "ontology_annotation"
     },
     "study_studyDesignDescriptors": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "studyDesignDescriptors_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "studyDesignDescriptors",
-      "targetKey": "studyDesignDescriptors_fk",
-      "keysIn": "study"
+      "targetKey": "study_studyDesignDescriptors_fk",
+      "keysIn": "ontology_annotation"
     },
     "factor_factorType": {
       "type": "one_to_many",
@@ -78,13 +81,13 @@
     },
     "study_unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "unitCategories_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "unitCategories",
-      "targetKey": "unitCategories_fk",
-      "keysIn": "study"
+      "targetKey": "study_unitCategories_fk",
+      "keysIn": "ontology_annotation"
     },
     "protocol_protocolType": {
       "type": "one_to_many",
@@ -149,14 +152,14 @@
       "targetKey": "technologyType_fk",
       "keysIn": "assay"
     },
-    "components_componentType": {
+    "component_componentType": {
       "type": "one_to_many",
-      "target": "components",
+      "target": "component",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "componentType",
       "targetKey": "componentType_fk",
-      "keysIn": "components"
+      "keysIn": "component"
     }
   }
 }

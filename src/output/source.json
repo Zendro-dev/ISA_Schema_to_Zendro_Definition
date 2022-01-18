@@ -5,24 +5,25 @@
   "attributes": {
     "name": "String",
     "characteristics_fk": "[String]",
-    "comments_fk": "[String]",
-    "id": "String",
-    "derived_children_fk":"[String]"
+    "derived_children_fk":"[String]",
+    "study_materials_sources_fk": "[String]",
+    "process_inputs_source": "[String]",
+    "id": "String"
   },
   "associations": {
     "derived_children": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "derivesFrom_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "derivesFrom",
-      "targetKey": "derivesFrom_fk",
-      "keysIn": "sample"
+      "targetKey": "derived_children_fk",
+      "keysIn": "source"
     },
     "characteristics": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "source_characteristics_fk",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -36,28 +37,28 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "source_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "source"
+      "targetKey": "source_comments_fk",
+      "keysIn": "comment"
     },
     "process_inputs_source": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "inputs_source_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "inputs_source",
-      "targetKey": "inputs_source_fk",
-      "keysIn": "process"
+      "targetKey": "process_inputs_source_fk",
+      "keysIn": "source"
     },
     "study_materials_sources": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "materials_sources_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "materials_sources",
-      "targetKey": "materials_sources_fk",
-      "keysIn": "study"
+      "targetKey": "study_materials_sources_fk",
+      "keysIn": "source"
     }
   }
 }

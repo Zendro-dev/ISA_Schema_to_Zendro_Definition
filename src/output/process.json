@@ -4,12 +4,11 @@
   "internalId": "id",
   "attributes": {
     "name": "String",
-    "executesProtocol_fk": "[String]",
-    "parameterValues_fk": "[String]",
+    "executesProtocol_fk": "String",
     "performer": "String",
     "date": "DateTime",
-    "previousProcess_fk": "[String]",
-    "nextProcess_fk": "[String]",
+    "previousProcess_fk": "String",
+    "nextProcess_fk": "String",
     "inputs_source_fk": "[String]",
     "inputs_sample_fk": "[String]",
     "inputs_data_fk": "[String]",
@@ -17,7 +16,6 @@
     "outputs_sample_fk": "[String]",
     "outputs_data_fk": "[String]",
     "outputs_material_fk": "[String]",
-    "comments_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -36,11 +34,12 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "process_parameterValues",
-      "targetKey": "parameterValues_fk",
-      "keysIn": "process"
+      "targetKey": "process_parameterValues_fk",
+      "keysIn": "process_parameter_value"
     },
     "previousProcess": {
       "type": "one_to_one",
+      "sourceKey": "nextProcess_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -50,6 +49,7 @@
     },
     "nextProcess": {
       "type": "one_to_one",
+      "sourceKey": "previousProcess_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -59,7 +59,7 @@
     },
     "inputs_source": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_inputs_source_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -69,7 +69,7 @@
     },
     "inputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_inputs_sample_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -79,7 +79,7 @@
     },
     "inputs_data": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_inputs_data_fk",
       "target": "data",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -89,7 +89,7 @@
     },
     "inputs_material": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_inputs_material_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -99,7 +99,7 @@
     },
     "outputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_outputs_sample_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -109,7 +109,7 @@
     },
     "outputs_data": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_outputs_data_fk",
       "target": "data",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -119,7 +119,7 @@
     },
     "outputs_material": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "process_outputs_data_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -132,9 +132,9 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "process_comment",
-      "targetKey": "comments_fk",
-      "keysIn": "process"
+      "reverseAssociation": "process_comments",
+      "targetKey": "process_comment_fk",
+      "keysIn": "comment"
     },
     "assay_processSequence": {
       "type": "many_to_one",
@@ -142,7 +142,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "processSequence",
-      "targetKey": "processSequence_fk",
+      "targetKey": "assay_processSequence_fk",
       "keysIn": "assay"
     },
     "study_processSequence": {

@@ -3,8 +3,8 @@
   "storageType": "sql",
   "internalId": "id",
   "attributes": {
-    "parameterName_fk": "[String]",
-    "comments_fk": "[String]",
+    "parameterName_fk": "String",
+    "protocol_parameters": "[String]",
     "id": "String"
   },
   "associations": {
@@ -23,18 +23,18 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocol_parameter_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "protocol_parameter"
+      "targetKey": "protocol_parameter_comments_fk",
+      "keysIn": "comment"
     },
     "protocol_parameters": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "parameters_fk",
       "target": "protocol",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "parameters",
-      "targetKey": "parameters_fk",
-      "keysIn": "protocol"
+      "targetKey": "protocol_parameters_fk",
+      "keysIn": "protocol_parameters"
     },
     "process_parameter_value_category": {
       "type": "one_to_many",

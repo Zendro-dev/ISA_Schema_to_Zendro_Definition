@@ -7,8 +7,8 @@
     "doi": "String",
     "authorList": "String",
     "title": "String",
-    "status_fk": "[String]",
-    "comments_fk": "[String]",
+    "status_fk": "String",
+    "study_publications_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -26,9 +26,9 @@
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "publication_comment",
-      "targetKey": "comments_fk",
-      "keysIn": "publication"
+      "reverseAssociation": "publication_comments",
+      "targetKey": "publication_comment_fk",
+      "keysIn": "comment"
     },
     "investigation_publications": {
       "type": "many_to_one",
@@ -36,18 +36,18 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "publications",
-      "targetKey": "publications_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_publications_fk",
+      "keysIn": "publication"
     },
     "study_publications": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "publications_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "publications",
-      "targetKey": "publications_fk",
-      "keysIn": "study"
+      "targetKey": "study_publications_fk",
+      "keysIn": "publication"
     }
   }
 }

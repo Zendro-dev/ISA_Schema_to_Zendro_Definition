@@ -7,13 +7,11 @@
     "measurementType_fk": "String",
     "technologyType_fk": "String",
     "technologyPlatform": "String",
-    "dataFiles_fk": "[String]",
     "materials_samples_fk": "[String]",
     "materials_otherMaterials_fk": "[String]",
     "characteristicCategories_fk": "[String]",
     "unitCategories_fk": "[String]",
-    "processSequence_fk": "[String]",
-    "comments_fk": "[String]",
+    "study_assays_fk": "String",
     "id": "String"
   },
   "associations": {
@@ -37,7 +35,7 @@
     },
     "materials_otherMaterials":{
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "assay_materials_otherMaterials_fK",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -47,7 +45,7 @@
     },
     "materials_samples":{
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "assay_materials_samples_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -61,12 +59,12 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_dataFiles",
-      "targetKey": "dataFiles_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_dataFiles_fk",
+      "keysIn": "data"
     },
     "characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "assay_characteristicCategories_fk",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -76,7 +74,7 @@
     },
     "unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "assay_unitCategories_fk",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -90,17 +88,17 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_processSequence",
-      "targetKey": "processSequence_fk",
-      "keysIn": "assay"
+      "targetKey": "assay_processSequence_fk",
+      "keysIn": "process"
     },
     "comments": {
       "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "assay_comment",
-      "targetKey": "comments_fk",
-      "keysIn": "assay"
+      "reverseAssociation": "assay_comments",
+      "targetKey": "assay_comment_fk",
+      "keysIn": "comment"
     },
     "study_assays": {
       "type": "many_to_one",
@@ -108,8 +106,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assays",
-      "targetKey": "assays_fk",
-      "keysIn": "study"
+      "targetKey": "study_assays_fk",
+      "keysIn": "assay"
     }
   }
 }

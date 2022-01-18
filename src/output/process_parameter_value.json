@@ -3,10 +3,10 @@
   "storageType": "sql",
   "internalId": "id",
   "attributes": {
-    "category_fk": "[String]",
+    "category_fk": "String",
     "value": "String",
-    "unit_fk": "[String]",
-    "comments_fk": "[String]",
+    "unit_fk": "String",
+    "process_parameterValues_fk": "String",
     "id": "String"
   },
   "associations": {
@@ -34,8 +34,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "process_parameter_value_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "process_parameter_value"
+      "targetKey": "process_parameter_value_comments_fk",
+      "keysIn": "comment"
     },
     "process_parameterValues": {
       "type": "many_to_one",
@@ -43,8 +43,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "parameterValues",
-      "targetKey": "parameterValues_fk",
-      "keysIn": "process"
+      "targetKey": "process_parameterValues_fk",
+      "keysIn": "process_parameter_value"
     }
   }
 }

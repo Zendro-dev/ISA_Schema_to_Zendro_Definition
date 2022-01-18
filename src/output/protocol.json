@@ -4,20 +4,20 @@
   "internalId": "id",
   "attributes": {
     "name": "String",
-    "protocolType_fk": "[String]",
+    "protocolType_fk": "String",
     "description": "String",
     "uri": "String",
     "version": "String",
     "parameters_fk": "[String]",
-    "comments_fk": "[String]",
-    "components_fk":"[String]",
+    "components_fk": "[String]",
+    "study_protocols_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "components": {
       "type": "many_to_many",
-      "sourceKey": "",
-      "target": "components",
+      "sourceKey": "protocol_components_fk",
+      "target": "component",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocol_components",
@@ -35,7 +35,7 @@
     },
     "parameters": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "protocol_parameters_fk",
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -49,8 +49,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocol_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "protocol"
+      "targetKey": "protocol_comments_fk",
+      "keysIn": "comment"
     },    
     "process_executesProtocol": {
       "type": "one_to_many",
@@ -63,13 +63,13 @@
     },
     "study_protocols": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "protocols_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocols",
-      "targetKey": "protocols_fk",
-      "keysIn": "study"
+      "targetKey": "study_protocols_fk",
+      "keysIn": "protocol"
     }
   }
 }

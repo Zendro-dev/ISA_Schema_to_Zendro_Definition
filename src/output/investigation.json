@@ -9,11 +9,7 @@
     "description": "String",
     "submissionDate": "DateTime",
     "publicReleaseDate": "DateTime",
-    "ontologySourceReferences_fk": "[String]",
-    "publications_fk": "[String]",
     "people_fk": "[String]",
-    "studies_fk": "[String]",
-    "comments_fk": "[String]",
     "id": "String"
   },
   "associations": {
@@ -23,8 +19,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "investigation_ontologySourceReferences",
-      "targetKey": "ontologySourceReferences_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_ontologySourceReferences_fk",
+      "keysIn": "ontology_source_reference"
     },
     "publications": {
       "type": "one_to_many",
@@ -32,12 +28,12 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "investigation_publications",
-      "targetKey": "publications_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_publications_fk",
+      "keysIn": "publication"
     },
     "people": {
       "type": "many_to_many",
-      "sourceKey": "",
+      "sourceKey": "investigation_people_fk",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -51,8 +47,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "investigation_studies",
-      "targetKey": "studies_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_studies_fk",
+      "keysIn": "study"
     },
     "comments": {
       "type": "one_to_many",
@@ -60,8 +56,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "investigation_comments",
-      "targetKey": "comments_fk",
-      "keysIn": "investigation"
+      "targetKey": "investigation_comments_fk",
+      "keysIn": "comment"
     }
   }
 }

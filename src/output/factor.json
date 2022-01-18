@@ -1,6 +1,7 @@
 {
   "model": "factor",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "factorName": "String",
     "factorType_fk": "[String]",

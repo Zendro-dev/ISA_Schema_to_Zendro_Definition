@@ -1,6 +1,7 @@
 {
   "model": "publication",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "pubMedID": "String",
     "doi": "String",

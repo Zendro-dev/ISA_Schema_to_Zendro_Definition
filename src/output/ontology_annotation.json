@@ -1,6 +1,7 @@
 {
   "model": "ontology_annotation",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "annotationValue": "String",
     "termSource": "String",

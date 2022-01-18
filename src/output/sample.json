@@ -1,6 +1,7 @@
 {
   "model": "sample",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "characteristics_fk": "[String]",

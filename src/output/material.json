@@ -1,6 +1,7 @@
 {
   "model": "material",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "type": "String",

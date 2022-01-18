@@ -1,6 +1,7 @@
 {
   "model": "comment",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "value": "String",

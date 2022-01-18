@@ -1,6 +1,7 @@
 {
   "model": "investigation",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "filename": "String",
     "identifier": "String",

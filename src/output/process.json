@@ -1,6 +1,7 @@
 {
   "model": "process",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "executesProtocol_fk": "[String]",

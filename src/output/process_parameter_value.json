@@ -1,6 +1,7 @@
 {
   "model": "process_parameter_value",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "category_fk": "[String]",
     "value": "String",

@@ -1,6 +1,7 @@
 {
   "model": "protocol",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "protocolType_fk": "[String]",

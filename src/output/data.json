@@ -1,6 +1,7 @@
 {
   "model": "data",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "type": "String",

@@ -1,6 +1,7 @@
 {
     "model": "components",
     "storageType": "sql",
+  "internalId": "id",
     "attributes": {
         "componentName":"String",
         "componentType_fk":"[String]",

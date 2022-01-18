@@ -1,6 +1,7 @@
 {
   "model": "material_attribute",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "characteristicType_fk": "[String]",
     "id": "String"

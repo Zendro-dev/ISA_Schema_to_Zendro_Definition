@@ -1,6 +1,7 @@
 {
   "model": "protocol_parameter",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "parameterName_fk": "[String]",
     "comments_fk": "[String]",

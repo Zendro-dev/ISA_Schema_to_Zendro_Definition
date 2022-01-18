@@ -1,6 +1,7 @@
 {
   "model": "person",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "lastName": "String",
     "firstName": "String",

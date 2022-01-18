@@ -12,6 +12,7 @@
   "associations": {
     "derived_children": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -21,6 +22,7 @@
     },
     "characteristics": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -39,6 +41,7 @@
     },
     "process_inputs_source": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -48,6 +51,7 @@
     },
     "study_materials_sources": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

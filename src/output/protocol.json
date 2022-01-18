@@ -16,6 +16,7 @@
   "associations": {
     "components": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "components",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -34,6 +35,7 @@
     },
     "parameters": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -61,6 +63,7 @@
     },
     "study_protocols": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

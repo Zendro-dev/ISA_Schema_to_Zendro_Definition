@@ -59,6 +59,7 @@
     },
     "inputs_source": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -68,6 +69,7 @@
     },
     "inputs_sample": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -77,6 +79,7 @@
     },
     "inputs_data": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "data",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -86,6 +89,7 @@
     },
     "inputs_material": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -95,6 +99,7 @@
     },
     "outputs_sample": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -104,6 +109,7 @@
     },
     "outputs_data": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "data",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -113,6 +119,7 @@
     },
     "outputs_material": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

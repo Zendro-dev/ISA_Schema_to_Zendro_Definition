@@ -39,6 +39,7 @@
     },
     "sample_factorValues": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

@@ -18,6 +18,7 @@
   "associations": {
     "roles": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -36,6 +37,7 @@
     },
     "investigation_people": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "investigation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -45,6 +47,7 @@
     },
     "study_people": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

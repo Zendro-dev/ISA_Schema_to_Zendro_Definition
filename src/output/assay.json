@@ -4,8 +4,8 @@
   "internalId": "id",
   "attributes": {
     "filename": "String",
-    "measurementType_fk": "[String]",
-    "technologyType_fk": "[String]",
+    "measurementType_fk": "String",
+    "technologyType_fk": "String",
     "technologyPlatform": "String",
     "dataFiles_fk": "[String]",
     "materials_samples_fk": "[String]",
@@ -37,6 +37,7 @@
     },
     "materials_otherMaterials":{
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -46,6 +47,7 @@
     },
     "materials_samples":{
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -64,6 +66,7 @@
     },
     "characteristicCategories": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -73,6 +76,7 @@
     },
     "unitCategories": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

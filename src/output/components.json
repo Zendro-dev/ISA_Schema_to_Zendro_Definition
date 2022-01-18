@@ -28,6 +28,7 @@
         },
         "protocol_components": {
             "type": "many_to_many",
+      "sourceKey": "",
             "target": "protocol",
             "targetStorageType": "sql",
             "implementation": "foreignkeys",

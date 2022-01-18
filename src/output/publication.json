@@ -41,6 +41,7 @@
     },
     "study_publications": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

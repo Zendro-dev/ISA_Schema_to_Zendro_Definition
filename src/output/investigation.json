@@ -37,6 +37,7 @@
     },
     "people": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

@@ -29,6 +29,7 @@
     },
     "study_factors": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

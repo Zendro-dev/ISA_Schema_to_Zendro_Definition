@@ -39,6 +39,7 @@
     },
     "material_characteristics": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -48,6 +49,7 @@
     },
     "source_characteristics": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -57,6 +59,7 @@
     },
     "sample_characteristics": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

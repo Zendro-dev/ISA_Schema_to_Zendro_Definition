@@ -20,6 +20,7 @@
     },
     "process_inputs_data": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -29,6 +30,7 @@
     },
     "process_outputs_data": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

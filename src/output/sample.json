@@ -13,6 +13,7 @@
   "associations": {
     "characteristics": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -22,6 +23,7 @@
     },
     "factorValues": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -31,6 +33,7 @@
     },
     "derivesFrom": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -49,6 +52,7 @@
     },
     "process_inputs_sample": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -58,6 +62,7 @@
     },
     "process_outputs_sample": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -67,6 +72,7 @@
     },
     "assay_materials_samples":{
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -76,6 +82,7 @@
     },
     "study_materials_samples": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

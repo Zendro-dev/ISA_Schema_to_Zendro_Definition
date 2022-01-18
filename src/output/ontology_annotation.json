@@ -30,6 +30,7 @@
     },
     "assay_unitCategories": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -48,6 +49,7 @@
     },
     "person_roles": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -57,6 +59,7 @@
     },
     "study_studyDesignDescriptors": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
@@ -75,6 +78,7 @@
     },
     "study_unitCategories": {
       "type": "many_to_many",
+      "sourceKey": "",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",

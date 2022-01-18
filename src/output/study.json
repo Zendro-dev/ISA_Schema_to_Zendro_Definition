@@ -27,72 +27,72 @@
   "associations": {
     "materials_sources": {
       "type": "many_to_many",
-      "sourceKey": "study_materials_sources_fk",
+      "sourceKey": "materials_sources_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_materials_sources",
-      "targetKey": "materials_sources_fk",
+      "targetKey": "study_materials_sources_fk",
       "keysIn": "study"
     },
     "materials_samples": {
       "type": "many_to_many",
-      "sourceKey": "study_materials_samples_fk",
+      "sourceKey": "materials_samples_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_materials_samples",
-      "targetKey": "materials_samples_fk",
+      "targetKey": "study_materials_samples_fk",
       "keysIn": "study"
     },
     "materials_otherMaterials": {
       "type": "many_to_many",
-      "sourceKey": "study_materials_otherMaterials_fk",
+      "sourceKey": "materials_otherMaterials_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_materials_otherMaterials",
-      "targetKey": "materials_otherMaterials_fk",
+      "targetKey": "study_materials_otherMaterials_fk",
       "keysIn": "study"
     },
     "publications": {
       "type": "many_to_many",
-      "sourceKey": "study_publications_fk",
+      "sourceKey": "publications_fk",
       "target": "publication",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_publications",
-      "targetKey": "publications_fk",
+      "targetKey": "study_publications_fk",
       "keysIn": "study"
     },
     "people": {
       "type": "many_to_many",
-      "sourceKey": "study_people_fk",
+      "sourceKey": "people_fk",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_people",
-      "targetKey": "people_fk",
+      "targetKey": "study_people_fk",
       "keysIn": "study"
     },
     "studyDesignDescriptors": {
       "type": "many_to_many",
-      "sourceKey": "study_studyDesignDescriptors_fk",
+      "sourceKey": "studyDesignDescriptors_fk",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_studyDesignDescriptors",
-      "targetKey": "studyDesignDescriptors_fk",
+      "targetKey": "study_studyDesignDescriptors_fk",
       "keysIn": "study"
     },
     "protocols": {
       "type": "many_to_many",
-      "sourceKey": "study_protocols_fk",
+      "sourceKey": "protocols_fk",
       "target": "protocol",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_protocols",
-      "targetKey": "protocols_fk",
+      "targetKey": "study_protocols_fk",
       "keysIn": "study"
     },
     "processSequence": {
@@ -115,32 +115,32 @@
     },
     "factors": {
       "type": "many_to_many",
-      "sourceKey": "study_factors_fk",
+      "sourceKey": "factors_fk",
       "target": "factor",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_factors",
-      "targetKey": "factors_fk",
+      "targetKey": "study_factors_fk",
       "keysIn": "study"
     },
     "characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "study_characteristicCategories_fk",
+      "sourceKey": "characteristicCategories_fk",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_characteristicCategories",
-      "targetKey": "characteristicCategories_fk",
+      "targetKey": "study_characteristicCategories_fk",
       "keysIn": "study"
     },
     "unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "study_unitCategories_fk",
+      "sourceKey": "unitCategories_fk",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "study_unitCategories",
-      "targetKey": "unitCategories_fk",
+      "targetKey": "study_unitCategories_fk",
       "keysIn": "study"
     },
     "comments": {

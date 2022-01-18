@@ -41,32 +41,32 @@
     },
     "material_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "characteristics_fk",
+      "sourceKey": "material_characteristics_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "material_characteristics_fk",
+      "targetKey": "characteristics_fk",
       "keysIn": "material_attribute_value"
     },
     "source_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "characteristics_fk",
+      "sourceKey": "source_characteristics_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "source_characteristics_fk",
+      "targetKey": "characteristics_fk",
       "keysIn": "material_attribute_value"
     },
     "sample_characteristics": {
       "type": "many_to_many",
-      "sourceKey": "characteristics_fk",
+      "sourceKey": "sample_characteristics_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristics",
-      "targetKey": "sample_characteristics_fk",
+      "targetKey": "characteristics_fk",
       "keysIn": "material_attribute_value"
     }
   }

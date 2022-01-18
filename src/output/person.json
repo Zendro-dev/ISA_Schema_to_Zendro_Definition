@@ -19,12 +19,12 @@
   "associations": {
     "roles": {
       "type": "many_to_many",
-      "sourceKey": "person_roles_fk",
+      "sourceKey": "roles_fk",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "person_roles",
-      "targetKey": "roles_fk",
+      "targetKey": "person_roles_fk",
       "keysIn": "person"
     },
     "comments": {
@@ -38,22 +38,22 @@
     },
     "investigation_people": {
       "type": "many_to_many",
-      "sourceKey": "people_fk",
+      "sourceKey": "investigation_people_fk",
       "target": "investigation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "people",
-      "targetKey": "investigation_people_fk",
+      "targetKey": "people_fk",
       "keysIn": "person"
     },
     "study_people": {
       "type": "many_to_many",
-      "sourceKey": "people_fk",
+      "sourceKey": "study_people_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "people",
-      "targetKey": "study_people_fk",
+      "targetKey": "people_fk",
       "keysIn": "person"
     }
   }

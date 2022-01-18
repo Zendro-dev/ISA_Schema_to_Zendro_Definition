@@ -33,12 +33,12 @@
     },
     "people": {
       "type": "many_to_many",
-      "sourceKey": "investigation_people_fk",
+      "sourceKey": "people_fk",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "investigation_people",
-      "targetKey": "people_fk",
+      "targetKey": "investigation_people_fk",
       "keysIn": "investigation"
     },
     "studies": {

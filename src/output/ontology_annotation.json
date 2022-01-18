@@ -33,12 +33,12 @@
     },
     "assay_unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "unitCategories_fk",
+      "sourceKey": "assay_unitCategories_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "unitCategories",
-      "targetKey": "assay_unitCategories_fk",
+      "targetKey": "unitCategories_fk",
       "keysIn": "ontology_annotation"
     },
     "publication_status": {
@@ -52,22 +52,22 @@
     },
     "person_roles": {
       "type": "many_to_many",
-      "sourceKey": "roles_fk",
+      "sourceKey": "person_roles_fk",
       "target": "person",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "roles",
-      "targetKey": "person_roles_fk",
+      "targetKey": "roles_fk",
       "keysIn": "ontology_annotation"
     },
     "study_studyDesignDescriptors": {
       "type": "many_to_many",
-      "sourceKey": "studyDesignDescriptors_fk",
+      "sourceKey": "study_studyDesignDescriptors_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "studyDesignDescriptors",
-      "targetKey": "study_studyDesignDescriptors_fk",
+      "targetKey": "studyDesignDescriptors_fk",
       "keysIn": "ontology_annotation"
     },
     "factor_factorType": {
@@ -81,12 +81,12 @@
     },
     "study_unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "unitCategories_fk",
+      "sourceKey": "study_unitCategories_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "unitCategories",
-      "targetKey": "study_unitCategories_fk",
+      "targetKey": "unitCategories_fk",
       "keysIn": "ontology_annotation"
     },
     "protocol_protocolType": {

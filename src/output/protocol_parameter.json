@@ -28,12 +28,12 @@
     },
     "protocol_parameters": {
       "type": "many_to_many",
-      "sourceKey": "parameters_fk",
+      "sourceKey": "protocol_parameters_fk",
       "target": "protocol",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "parameters",
-      "targetKey": "protocol_parameters_fk",
+      "targetKey": "parameters_fk",
       "keysIn": "protocol_parameters"
     },
     "process_parameter_value_category": {

@@ -22,22 +22,22 @@
     },
     "process_inputs_data": {
       "type": "many_to_many",
-      "sourceKey": "inputs_data_fk",
+      "sourceKey": "process_inputs_data_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "inputs_data",
-      "targetKey": "process_inputs_data_fk",
+      "targetKey": "inputs_data_fk",
       "keysIn": "data"
     },
     "process_outputs_data": {
       "type": "many_to_many",
-      "sourceKey": "outputs_material_fk",
+      "sourceKey": "process_outputs_data_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "outputs_data",
-      "targetKey": "process_outputs_data_fk",
+      "targetKey": "outputs_material_fk",
       "keysIn": "data"
     },
     "assay_dataFiles": {

@@ -5,12 +5,13 @@
   "attributes": {
     "name": "String",
     "value": "String",
-    "assay_comment_fk": "String",
-    "ontology_annotation_comment_fk": "String",
-    "data_comment_fk": "String",
-    "process_comment_fk": "String",
-    "ontology_source_reference_comment_fk": "String",
+    "assay_comments_fk": "String",
+    "ontology_annotation_comments_fk": "String",
+    "data_comments_fk": "String",
+    "process_comments_fk": "String",
+    "ontology_source_reference_comments_fk": "String",
     "person_comments_fk": "String",
+    "publication_comments_fk": "String",
     "investigation_comments_fk": "String",
     "factor_comments_fk": "String",
     "study_comments_fk": "String",
@@ -32,7 +33,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "ontology_annotation_comment_fk",
+      "targetKey": "ontology_annotation_comments_fk",
       "keysIn": "comment"
     },
     "assay_comments": {
@@ -41,7 +42,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "assay_comment_fk",
+      "targetKey": "assay_comments_fk",
       "keysIn": "comment"
     },
     "data_comments": {
@@ -50,7 +51,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "data_comment_fk",
+      "targetKey": "data_comments_fk",
       "keysIn": "comment"
     },
     "process_comments": {
@@ -59,7 +60,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "process_comment_fk",
+      "targetKey": "process_comments_fk",
       "keysIn": "comment"
     },
     "ontology_source_reference_comments": {
@@ -68,7 +69,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "ontology_source_reference_comment_fk",
+      "targetKey": "ontology_source_reference_comments_fk",
       "keysIn": "comment"
     },
     "publication_comments": {
@@ -77,7 +78,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "comments",
-      "targetKey": "publication_comment_fk",
+      "targetKey": "publication_comments_fk",
       "keysIn": "comment"
     },
     "person_comments": {

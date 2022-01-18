@@ -16,12 +16,12 @@
   "associations": {
     "components": {
       "type": "many_to_many",
-      "sourceKey": "protocol_components_fk",
+      "sourceKey": "components_fk",
       "target": "component",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocol_components",
-      "targetKey": "components_fk",
+      "targetKey": "protocol_components_fk",
       "keysIn": "protocol"
     },
     "protocolType": {
@@ -35,12 +35,12 @@
     },
     "parameters": {
       "type": "many_to_many",
-      "sourceKey": "protocol_parameters_fk",
+      "sourceKey": "parameters_fk",
       "target": "protocol_parameter",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocol_parameters",
-      "targetKey": "parameters_fk",
+      "targetKey": "protocol_parameters_fk",
       "keysIn": "protocol"
     },
     "comments": {
@@ -63,12 +63,12 @@
     },
     "study_protocols": {
       "type": "many_to_many",
-      "sourceKey": "protocols_fk",
+      "sourceKey": "study_protocols_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "protocols",
-      "targetKey": "study_protocols_fk",
+      "targetKey": "protocols_fk",
       "keysIn": "protocol"
     }
   }

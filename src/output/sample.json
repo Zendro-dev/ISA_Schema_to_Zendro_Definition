@@ -16,32 +16,32 @@
   "associations": {
     "characteristics": {
       "type": "many_to_many",
-      "sourceKey": "sample_characteristics_fk",
+      "sourceKey": "characteristics_fk",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "sample_characteristics",
-      "targetKey": "characteristics_fk",
+      "targetKey": "sample_characteristics_fk",
       "keysIn": "sample"
     },
     "factorValues": {
       "type": "many_to_many",
-      "sourceKey": "sample_factorValues_fk",
+      "sourceKey": "factorValues_fk",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "sample_factorValues",
-      "targetKey": "factorValues_fk",
+      "targetKey": "sample_factorValues_fk",
       "keysIn": "sample"
     },
     "derivesFrom": {
       "type": "many_to_many",
-      "sourceKey": "derived_children_fk",
+      "sourceKey": "derivesFrom_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "derived_children",
-      "targetKey": "derivesFrom_fk",
+      "targetKey": "derived_children_fk",
       "keysIn": "sample"
     },
     "comments": {
@@ -55,42 +55,42 @@
     },
     "process_inputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "inputs_sample_fk",
+      "sourceKey": "process_inputs_sample_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "inputs_sample",
-      "targetKey": "process_inputs_sample_fk",
+      "targetKey": "inputs_sample_fk",
       "keysIn": "sample"
     },
     "process_outputs_sample": {
       "type": "many_to_many",
-      "sourceKey": "outputs_sample_fk",
+      "sourceKey": "process_outputs_sample_fk",
       "target": "process",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "outputs_sample",
-      "targetKey": "process_outputs_sample_fk",
+      "targetKey": "outputs_sample_fk",
       "keysIn": "sample"
     },
     "assay_materials_samples":{
       "type": "many_to_many",
-      "sourceKey": "materials_samples_fk",
+      "sourceKey": "assay_materials_samples_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "materials_samples",
-      "targetKey": "assay_materials_samples_fk",
+      "targetKey": "materials_samples_fk",
       "keysIn": "sample"
     },
     "study_materials_samples": {
       "type": "many_to_many",
-      "sourceKey": "materials_samples_fk",
+      "sourceKey": "study_materials_samples_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "materials_samples",
-      "targetKey": "study_materials_samples_fk",
+      "targetKey": "materials_samples_fk",
       "keysIn": "sample"
     }
   }

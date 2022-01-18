@@ -9,6 +9,7 @@
     "title": "String",
     "status_fk": "String",
     "study_publications_fk": "[String]",
+    "investigation_publications_fk": "String",
     "id": "String"
   },
   "associations": {
@@ -41,12 +42,12 @@
     },
     "study_publications": {
       "type": "many_to_many",
-      "sourceKey": "publications_fk",
+      "sourceKey": "study_publications_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "publications",
-      "targetKey": "study_publications_fk",
+      "targetKey": "publications_fk",
       "keysIn": "publication"
     }
   }

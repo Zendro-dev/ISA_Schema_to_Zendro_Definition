@@ -39,12 +39,12 @@
     },
     "sample_factorValues": {
       "type": "many_to_many",
-      "sourceKey": "factorValues_fk",
+      "sourceKey": "sample_factorValues_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "factorValues",
-      "targetKey": "sample_factorValues_fk",
+      "targetKey": "factorValues_fk",
       "keysIn": "factor_value"
     }
   }

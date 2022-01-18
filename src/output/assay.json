@@ -35,22 +35,22 @@
     },
     "materials_otherMaterials":{
       "type": "many_to_many",
-      "sourceKey": "assay_materials_otherMaterials_fK",
+      "sourceKey": "materials_otherMaterials_fk",
       "target": "material",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_materials_otherMaterials",
-      "targetKey": "materials_otherMaterials_fk",
+      "targetKey": "assay_materials_otherMaterials_fk",
       "keysIn": "assay"
     },
     "materials_samples":{
       "type": "many_to_many",
-      "sourceKey": "assay_materials_samples_fk",
+      "sourceKey": "materials_samples_fk",
       "target": "sample",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_materials_samples",
-      "targetKey": "materials_samples_fk",
+      "targetKey": "assay_materials_samples_fk",
       "keysIn": "assay"
     },
     "dataFiles": {
@@ -64,22 +64,22 @@
     },
     "characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "assay_characteristicCategories_fk",
+      "sourceKey": "characteristicCategories_fk",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_characteristicCategories",
-      "targetKey": "characteristicCategories_fk",
+      "targetKey": "assay_characteristicCategories_fk",
       "keysIn": "assay"
     },
     "unitCategories": {
       "type": "many_to_many",
-      "sourceKey": "assay_unitCategories_fk",
+      "sourceKey": "unitCategories_fk",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_unitCategories",
-      "targetKey": "unitCategories_fk",
+      "targetKey": "assay_unitCategories_fk",
       "keysIn": "assay"
     },
     "processSequence": {

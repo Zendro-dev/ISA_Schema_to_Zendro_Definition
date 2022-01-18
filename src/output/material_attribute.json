@@ -20,22 +20,22 @@
     },
     "assay_characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "characteristicCategories_fk",
+      "sourceKey": "assay_characteristicCategories_fk",
       "target": "assay",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristicCategories",
-      "targetKey": "assay_characteristicCategories_fk",
+      "targetKey": "characteristicCategories_fk",
       "keysIn": "material_attribute"
     },
     "study_characteristicCategories": {
       "type": "many_to_many",
-      "sourceKey": "characteristicCategories_fk",
+      "sourceKey": "study_characteristicCategories_fk",
       "target": "study",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "characteristicCategories",
-      "targetKey": "study_characteristicCategories_fk",
+      "targetKey": "characteristicCategories_fk",
       "keysIn": "material_attribute"
     },
     "material_attribute_value_category": {

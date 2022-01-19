@@ -16,6 +16,8 @@
     "outputs_sample_fk": "[String]",
     "outputs_data_fk": "[String]",
     "outputs_material_fk": "[String]",
+    "study_processSequence_fk": "String",
+    "assay_processSequence_fk": "String",
     "id": "String"
   },
   "associations": {
@@ -143,7 +145,7 @@
       "implementation": "foreignkeys",
       "reverseAssociation": "processSequence",
       "targetKey": "assay_processSequence_fk",
-      "keysIn": "assay"
+      "keysIn": "process"
     },
     "study_processSequence": {
       "type": "many_to_one",
@@ -151,8 +153,8 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "processSequence",
-      "targetKey": "processSequence_fk",
-      "keysIn": "study"
+      "targetKey": "study_processSequence_fk",
+      "keysIn": "process"
     }
   }
 }

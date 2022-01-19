@@ -1,10 +1,202 @@
 {
   "model": "comment",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "value": "String",
+    "assay_comments_fk": "String",
+    "ontology_annotation_comments_fk": "String",
+    "data_comments_fk": "String",
+    "process_comments_fk": "String",
+    "ontology_source_reference_comments_fk": "String",
+    "person_comments_fk": "String",
+    "publication_comments_fk": "String",
+    "investigation_comments_fk": "String",
+    "factor_comments_fk": "String",
+    "study_comments_fk": "String",
+    "protocol_comments_fk": "String",
+    "protocol_parameter_comments_fk": "String", 
+    "material_comments_fk": "String",
+    "source_comments_fk": "String",
+    "material_attribute_value_comments_fk": "String",
+    "factor_value_comments_fk": "String",
+    "process_parameter_value_comments_fk": "String",
+    "sample_comments_fk": "String",
+    "component_comments_fk": "String",
     "id": "String"
   },
-  "associations": {}
+  "associations": {    
+    "ontology_annotation_comments": {
+      "type": "many_to_one",
+      "target": "ontology_annotation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "ontology_annotation_comments_fk",
+      "keysIn": "comment"
+    },
+    "assay_comments": {
+      "type": "many_to_one",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "assay_comments_fk",
+      "keysIn": "comment"
+    },
+    "data_comments": {
+      "type": "many_to_one",
+      "target": "data",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "data_comments_fk",
+      "keysIn": "comment"
+    },
+    "process_comments": {
+      "type": "many_to_one",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "process_comments_fk",
+      "keysIn": "comment"
+    },
+    "ontology_source_reference_comments": {
+      "type": "many_to_one",
+      "target": "ontology_source_reference",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "ontology_source_reference_comments_fk",
+      "keysIn": "comment"
+    },
+    "publication_comments": {
+      "type": "many_to_one",
+      "target": "publication",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "publication_comments_fk",
+      "keysIn": "comment"
+    },
+    "person_comments": {
+      "type": "many_to_one",
+      "target": "person",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "person_comments_fk",
+      "keysIn": "comment"
+    },
+    "investigation_comments": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "investigation_comments_fk",
+      "keysIn": "comment"
+    },
+    "factor_comments": {
+      "type": "many_to_one",
+      "target": "factor",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "factor_comments_fk",
+      "keysIn": "comment"
+    },
+    "study_comments": {
+      "type": "many_to_one",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "study_comments_fk",
+      "keysIn": "comment"
+    },
+    "protocol_comments": {
+      "type": "many_to_one",
+      "target": "protocol",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "protocol_comments_fk",
+      "keysIn": "comment"
+    },
+    "protocol_parameter_comments": {
+      "type": "many_to_one",
+      "target": "protocol_parameter",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "protocol_parameter_comments_fk",
+      "keysIn": "comment"
+    },
+    "material_comments": {
+      "type": "many_to_one",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "material_comments_fk",
+      "keysIn": "comment"
+    },
+    "source_comments": {
+      "type": "many_to_one",
+      "target": "source",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "source_comments_fk",
+      "keysIn": "comment"
+    },
+    "material_attribute_value_comments": {
+      "type": "many_to_one",
+      "target": "material_attribute_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "material_attribute_value_comments_fk",
+      "keysIn": "comment"
+    },
+    "factor_value_comments": {
+      "type": "many_to_one",
+      "target": "factor_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "factor_value_comments_fk",
+      "keysIn": "comment"
+    },
+    "process_parameter_value_comments": {
+      "type": "many_to_one",
+      "target": "process_parameter_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "process_parameter_value_comments_fk",
+      "keysIn": "comment"
+    },
+    "sample_comments": {
+      "type": "many_to_one",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "sample_comments_fk",
+      "keysIn": "comment"
+    },
+    "component_comments": {
+      "type": "many_to_one",
+      "target": "component",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "comments",
+      "targetKey": "component_comments_fk",
+      "keysIn": "comment"
+    }
+  }
 }

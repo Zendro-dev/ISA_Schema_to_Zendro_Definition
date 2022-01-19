@@ -1,49 +1,73 @@
 {
   "model": "material_attribute_value",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
-    "category_fk": "[String]",
-    "value_fk": "[String]",
-    "unit_fk": "[String]",
-    "comments_fk": "[String]",
+    "category_fk": "String",
+    "value": "String",
+    "unit_fk": "String",
+    "source_characteristics_fk": "[String]",
+    "material_characteristics_fk": "[String]",
+    "sample_characteristics_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "category": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "material_attribute",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
-    },
-    "value": {
-      "type": "to_one",
-      "target": "ontology_annotation",
-      "targetStorageType": "sql",
-      "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "ontology_annotation_id",
-      "keysIn": "ontology_annotation"
+      "reverseAssociation": "material_attribute_value_category",
+      "targetKey": "category_fk",
+      "keysIn": "material_attribute_value"
     },
     "unit": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "material_attribute_value_unit",
+      "targetKey": "unit_fk",
+      "keysIn": "material_attribute_value"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "material_attribute_value_comments",
+      "targetKey": "material_attribute_value_comments_fk",
+      "keysIn": "comment"
+    },
+    "material_characteristics": {
+      "type": "many_to_many",
+      "sourceKey": "material_characteristics_fk",
+      "target": "material",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "material_attribute_value"
+    },
+    "source_characteristics": {
+      "type": "many_to_many",
+      "sourceKey": "source_characteristics_fk",
+      "target": "source",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "material_attribute_value"
+    },
+    "sample_characteristics": {
+      "type": "many_to_many",
+      "sourceKey": "sample_characteristics_fk",
+      "target": "sample",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristics",
+      "targetKey": "characteristics_fk",
+      "keysIn": "material_attribute_value"
     }
   }
 }

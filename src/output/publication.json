@@ -1,33 +1,54 @@
 {
   "model": "publication",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "pubMedID": "String",
     "doi": "String",
     "authorList": "String",
     "title": "String",
-    "status_fk": "[String]",
-    "comments_fk": "[String]",
+    "status_fk": "String",
+    "study_publications_fk": "[String]",
+    "investigation_publications_fk": "String",
     "id": "String"
   },
   "associations": {
     "status": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "publication_status",
+      "targetKey": "status_fk",
+      "keysIn": "publication"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "publication_comments",
+      "targetKey": "publication_comment_fk",
+      "keysIn": "comment"
+    },
+    "investigation_publications": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "publications",
+      "targetKey": "investigation_publications_fk",
+      "keysIn": "publication"
+    },
+    "study_publications": {
+      "type": "many_to_many",
+      "sourceKey": "study_publications_fk",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "publications",
+      "targetKey": "publications_fk",
+      "keysIn": "publication"
     }
   }
 }

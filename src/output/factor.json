@@ -1,30 +1,50 @@
 {
   "model": "factor",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "factorName": "String",
-    "factorType_fk": "[String]",
-    "comments_fk": "[String]",
+    "factorType_fk": "String",
+    "study_factors_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "factorType": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_factorType",
+      "targetKey": "factorType_fk",
+      "keysIn": "factor"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "factor_comments",
+      "targetKey": "factor_comments_fk",
+      "keysIn": "comment"
+    },
+    "study_factors": {
+      "type": "many_to_many",
+      "sourceKey": "study_factors_fk",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "factors",
+      "targetKey": "factors_fk",
+      "keysIn": "factor"
+    },
+    "factor_value_category": {
+      "type": "one_to_many",
+      "target": "factor_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "category",
+      "targetKey": "category_fk",
+      "keysIn": "factor_value"
     }
   }
 }

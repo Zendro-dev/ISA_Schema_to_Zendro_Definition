@@ -1,50 +1,97 @@
 {
   "model": "sample",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "characteristics_fk": "[String]",
     "factorValues_fk": "[String]",
     "derivesFrom_fk": "[String]",
-    "comments_fk": "[String]",
+    "assay_materials_samples_fk": "[String]",
+    "study_materials_samples_fk": "[String]",
+    "process_inputs_sample_fk": "[String]",
+    "process_outputs_sample_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "characteristics": {
-      "type": "to_many",
+      "type": "many_to_many",
+      "sourceKey": "characteristics_fk",
       "target": "material_attribute_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_characteristics",
+      "targetKey": "sample_characteristics_fk",
+      "keysIn": "sample"
     },
     "factorValues": {
-      "type": "to_many",
+      "type": "many_to_many",
+      "sourceKey": "factorValues_fk",
       "target": "factor_value",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_factorValues",
+      "targetKey": "sample_factorValues_fk",
+      "keysIn": "sample"
     },
     "derivesFrom": {
-      "type": "to_many",
+      "type": "many_to_many",
+      "sourceKey": "derivesFrom_fk",
       "target": "source",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "derived_children",
+      "targetKey": "derived_children_fk",
+      "keysIn": "sample"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "sample_comments",
+      "targetKey": "sample_comments_fk",
+      "keysIn": "comment"
+    },
+    "process_inputs_sample": {
+      "type": "many_to_many",
+      "sourceKey": "process_inputs_sample_fk",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "inputs_sample",
+      "targetKey": "inputs_sample_fk",
+      "keysIn": "sample"
+    },
+    "process_outputs_sample": {
+      "type": "many_to_many",
+      "sourceKey": "process_outputs_sample_fk",
+      "target": "process",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "outputs_sample",
+      "targetKey": "outputs_sample_fk",
+      "keysIn": "sample"
+    },
+    "assay_materials_samples":{
+      "type": "many_to_many",
+      "sourceKey": "assay_materials_samples_fk",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "sample"
+    },
+    "study_materials_samples": {
+      "type": "many_to_many",
+      "sourceKey": "study_materials_samples_fk",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "materials_samples",
+      "targetKey": "materials_samples_fk",
+      "keysIn": "sample"
     }
   }
 }

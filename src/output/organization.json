@@ -1,9 +1,9 @@
 {
   "model": "organization",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "name": "String",
     "id": "String"
-  },
-  "associations": {}
+  }
 }

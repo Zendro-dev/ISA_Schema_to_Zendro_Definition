@@ -1,19 +1,51 @@
 {
   "model": "material_attribute",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
-    "characteristicType_fk": "[String]",
+    "characteristicType_fk": "String",
+    "assay_characteristicCategories_fk": "[String]",
+    "study_characteristicCategories_fk": "[String]",
     "id": "String"
   },
   "associations": {
     "characteristicType": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "material_attribute_characteristicType",
+      "targetKey": "characteristicType_fk",
+      "keysIn": "material_attribute"
+    },
+    "assay_characteristicCategories": {
+      "type": "many_to_many",
+      "sourceKey": "assay_characteristicCategories_fk",
+      "target": "assay",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristicCategories",
+      "targetKey": "characteristicCategories_fk",
+      "keysIn": "material_attribute"
+    },
+    "study_characteristicCategories": {
+      "type": "many_to_many",
+      "sourceKey": "study_characteristicCategories_fk",
+      "target": "study",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "characteristicCategories",
+      "targetKey": "characteristicCategories_fk",
+      "keysIn": "material_attribute"
+    },
+    "material_attribute_value_category": {
+      "type": "one_to_many",
+      "target": "material_attribute_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "category",
+      "targetKey": "category_fk",
+      "keysIn": "material_attribute_value"
     }
   }
 }

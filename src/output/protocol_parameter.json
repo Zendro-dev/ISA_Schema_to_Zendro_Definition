@@ -1,29 +1,49 @@
 {
   "model": "protocol_parameter",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
-    "parameterName_fk": "[String]",
-    "comments_fk": "[String]",
+    "parameterName_fk": "String",
+    "protocol_parameters": "[String]",
     "id": "String"
   },
   "associations": {
     "parameterName": {
-      "type": "to_one",
+      "type": "many_to_one",
       "target": "ontology_annotation",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_parameter_parameterName",
+      "targetKey": "parameterName_fk",
+      "keysIn": "protocol_parameter"
     },
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "protocol_parameter_comments",
+      "targetKey": "protocol_parameter_comments_fk",
+      "keysIn": "comment"
+    },
+    "protocol_parameters": {
+      "type": "many_to_many",
+      "sourceKey": "protocol_parameters_fk",
+      "target": "protocol",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "parameters",
+      "targetKey": "parameters_fk",
+      "keysIn": "protocol_parameters"
+    },
+    "process_parameter_value_category": {
+      "type": "one_to_many",
+      "target": "process_parameter_value",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "category",
+      "targetKey": "category_fk",
+      "keysIn": "process_parameter_value"
     }
   }
 }

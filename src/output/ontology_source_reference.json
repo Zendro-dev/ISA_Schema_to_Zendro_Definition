@@ -1,23 +1,33 @@
 {
   "model": "ontology_source_reference",
   "storageType": "sql",
+  "internalId": "id",
   "attributes": {
     "description": "String",
     "file": "String",
     "name": "String",
     "version": "String",
-    "comments_fk": "[String]",
+    "investigation_ontologySourceReferences_fk": "String",
     "id": "String"
   },
   "associations": {
     "comments": {
-      "type": "to_many",
+      "type": "one_to_many",
       "target": "comment",
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
-      "reverseAssociation": "TO-DO",
-      "targetKey": "To-Do-Key",
-      "keysIn": "To-Do-keyIn"
+      "reverseAssociation": "ontology_source_reference_comments",
+      "targetKey": "ontology_source_reference_comment_fk",
+      "keysIn": "comment"
+    },
+    "investigation_ontologySourceReferences": {
+      "type": "many_to_one",
+      "target": "investigation",
+      "targetStorageType": "sql",
+      "implementation": "foreignkeys",
+      "reverseAssociation": "ontologySourceReferences",
+      "targetKey": "investigation_ontologySourceReferences_fk",
+      "keysIn": "ontology_source_reference"
     }
   }
 }

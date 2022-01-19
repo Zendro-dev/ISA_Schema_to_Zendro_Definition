@@ -19,7 +19,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "ontology_annotation_comments",
-      "targetKey": "ontology_annotations_fk",
+      "targetKey": "ontology_annotation_comments_fk",
       "keysIn": "comment"
     },    
     "assay_measurementType": {

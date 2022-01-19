@@ -126,7 +126,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "process_outputs_material",
-      "targetKey": "process_outputs_data_fk",
+      "targetKey": "process_outputs_material_fk",
       "keysIn": "process"
     },
     "comments": {

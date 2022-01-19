@@ -97,7 +97,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "assay_comments",
-      "targetKey": "assay_comment_fk",
+      "targetKey": "assay_comments_fk",
       "keysIn": "comment"
     },
     "study_assays": {

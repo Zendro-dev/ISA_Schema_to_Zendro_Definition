@@ -17,7 +17,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "data_comments",
-      "targetKey": "data_comment_fk",
+      "targetKey": "data_comments_fk",
       "keysIn": "comment"
     },
     "process_inputs_data": {

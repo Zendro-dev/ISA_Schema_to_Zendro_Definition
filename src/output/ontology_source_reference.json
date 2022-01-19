@@ -17,7 +17,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "ontology_source_reference_comments",
-      "targetKey": "ontology_source_reference_comment_fk",
+      "targetKey": "ontology_source_reference_comments_fk",
       "keysIn": "comment"
     },
     "investigation_ontologySourceReferences": {

@@ -28,7 +28,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "publication_comments",
-      "targetKey": "publication_comment_fk",
+      "targetKey": "publication_comments_fk",
       "keysIn": "comment"
     },
     "investigation_publications": {

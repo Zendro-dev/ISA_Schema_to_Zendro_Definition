@@ -135,7 +135,7 @@
       "targetStorageType": "sql",
       "implementation": "foreignkeys",
       "reverseAssociation": "process_comments",
-      "targetKey": "process_comment_fk",
+      "targetKey": "process_comments_fk",
       "keysIn": "comment"
     },
     "assay_processSequence": {
